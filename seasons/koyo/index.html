@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+  <html lang="zh-Hant">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>紅葉前線地圖 | 季節前線 Season Frontier</title>
+  <meta name="description" content="每日更新的日本紅葉見頃狀態地圖。">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  </head>
+  <body class="season-autumn">
+  <header>
+  <a class="logo" href="/">季節前線 Season Frontier</a>
+  <nav>
+  <a href="/seasons/koyo/">紅葉地圖</a>
+  <a href="/regions/hokuriku/">北陸指南</a>
+  <a href="/transport/pass-finder/">周遊券比較</a>
+  <a href="/itineraries/hokuriku-autumn/">範例行程</a>
+  <a href="/tools/budget/">預算計算</a>
+  </nav>
+  </header>
+  <main>
+  <h1>🍁 紅葉前線地圖</h1>
+  <p>點擊地圖上的名所圖標，查看見頃狀態與歷年見頃日期區間。色標說明如下：</p>
+  <div class="legend">
+  <span><span class="dot" style="background:#4caf50;"></span>青葉</span>
+  <span><span class="dot" style="background:#ffb300;"></span>色づき始め</span>
+  <span><span class="dot" style="background:#e64a19;"></span>見頃</span>
+  <span><span class="dot" style="background:#8d6e63;"></span>落葉</span>
+  </div>
+  <div id="koyo-map"></div>
+  <p id="koyo-date" class="disclaimer">資料載入中...</p>
+  <div class="card">
+  <h2>關於這份資料</h2>
+  <p>正式版將由 GitHub Actions 每日自動執行 Playwright 爬蟲，抓取日本氣象協會與 Weathernews 前線頁資料，依日期分檔寫入，杜絕歷史覆寫問題。目前頁面展示的是示範用的種子資料，僅供介面驗證。</p>
+  </div>
+  </main>
+  <footer>Season Frontier - 季節と地域を結ぶ旅の羅針盤</footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/assets/js/koyo-map.js"></script>
+  </body>
+  </html>
+  
