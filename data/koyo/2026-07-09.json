@@ -1,0 +1,11 @@
+{
+  "date": "2026-07-09",
+  "source": "seed-data(範例資料,待 GitHub Actions 自動爬蟲上線後取代)",
+  "spots": [
+    { "id": "kenrokuen", "name": "兼六園", "region": "石川・金澤", "lat": 36.5613, "lng": 136.6625, "status": "青葉", "typicalPeak": "11月中旬–11月下旬" },
+    { "id": "tateyama-kurobe", "name": "立山黑部", "region": "富山", "lat": 36.5760, "lng": 137.5670, "status": "青葉", "typicalPeak": "10月上旬–10月中旬" },
+    { "id": "shirakawago", "name": "白川鄉", "region": "岐阜", "lat": 36.2578, "lng": 136.9066, "status": "青葉", "typicalPeak": "11月上旬–11月中旬" },
+    { "id": "eiheiji", "name": "永平寺", "region": "福井", "lat": 36.0554, "lng": 136.3486, "status": "青葉", "typicalPeak": "11月中旬–11月下旬" },
+    { "id": "toyama-castle", "name": "富山城址公園", "region": "富山", "lat": 36.6953, "lng": 137.2113, "status": "青葉", "typicalPeak": "11月中旬" }
+  ]
+}
