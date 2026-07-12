@@ -1,0 +1,19 @@
+{
+  "updated": "2026-07-01",
+  "disclaimer": "票價為示範用途,實際請以 JR 官網公告為準,建議每年至少覆核一次",
+  "passes": [
+    { "id": "jr-hokuriku-arch", "name": "北陸拱型 JR Pass", "days": 7, "priceJPY": 30000, "coverage": ["nagoya","kanazawa","toyama","shirakawago","kyoto","osaka"], "notes": "名古屋進、大阪出的北陸拱型路線,含新幹線自由席" },
+    { "id": "jr-west-hokuriku", "name": "JR西日本・北陸地區周遊券", "days": 4, "priceJPY": 6600, "coverage": ["kanazawa","toyama","fukui"], "notes": "適合僅停留北陸本地,不進出名古屋/關西的行程" },
+    { "id": "takayama-hokuriku", "name": "高山・北陸周遊券", "days": 5, "priceJPY": 15280, "coverage": ["nagoya","takayama","shirakawago","kanazawa","toyama"], "notes": "名古屋進出,涵蓋高山、白川鄉、金澤、富山" }
+  ],
+  "singleFares": {
+    "nagoya-kanazawa": 7340,
+    "kanazawa-toyama": 2860,
+    "toyama-shirakawago": 1700,
+    "shirakawago-kanazawa": 1850,
+    "kanazawa-kyoto": 7040,
+    "kyoto-osaka": 570,
+    "nagoya-takayama": 6260,
+    "takayama-shirakawago": 2470
+  }
+}
