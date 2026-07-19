@@ -1,0 +1,28 @@
+{
+  "region": "tokai",
+  "regionLabel": "東海",
+  "date": "2026-07-19",
+  "source": "koyo.walkerplus.com 都道府県別頁面彙整（例年見頃資料；本區域逐點名所清單製作中，僅提供縣別例年見頃平均）",
+  "prefectures": [
+    {
+      "name": "岐阜県",
+      "typicalPeak": "10月上旬–11月下旬",
+      "spots": []
+    },
+    {
+      "name": "静岡県",
+      "typicalPeak": "10月下旬–12月上旬",
+      "spots": []
+    },
+    {
+      "name": "愛知県",
+      "typicalPeak": "11月上旬–12月上旬",
+      "spots": []
+    },
+    {
+      "name": "三重県",
+      "typicalPeak": "10月下旬–12月上旬",
+      "spots": []
+    }
+  ]
+}
