@@ -1,0 +1,23 @@
+{
+  "region": "koshinetsu",
+  "regionLabel": "甲信越",
+  "date": "2026-07-19",
+  "source": "koyo.walkerplus.com 都道府県別頁面彙整（例年見頃資料；本區域逐點名所清單製作中，僅提供縣別例年見頃平均）",
+  "prefectures": [
+    {
+      "name": "新潟県",
+      "typicalPeak": "10月中旬–11月中旬",
+      "spots": []
+    },
+    {
+      "name": "山梨県",
+      "typicalPeak": "10月中旬–11月下旬",
+      "spots": []
+    },
+    {
+      "name": "長野県",
+      "typicalPeak": "9月下旬–11月下旬",
+      "spots": []
+    }
+  ]
+}
