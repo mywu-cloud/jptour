@@ -2,12 +2,113 @@
   "region": "hokkaido",
   "regionLabel": "北海道",
   "date": "2026-07-19",
-  "source": "koyo.walkerplus.com 都道府県別頁面彙整（例年見頃資料；本區域逐點名所清單製作中，僅提供縣別例年見頃平均）",
+  "source": "koyo.walkerplus.com 各都道府県紅葉名所頁面(事實性資料:名稱/地點/例年色づき始め/例年見頃/人氣度數值,不轉載文章或照片)",
   "prefectures": [
     {
       "name": "北海道",
-      "typicalPeak": "9月中旬–10月下旬",
-      "spots": []
+      "typicalPeak": "9月中旬～10月下旬",
+      "spots": [
+        {
+          "id": "ar0101e12945",
+          "name": "円山公園の紅葉",
+          "area": "北海道・札幌市中央区",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e12945/"
+        },
+        {
+          "id": "ar0101e562736",
+          "name": "大通公園の紅葉",
+          "area": "北海道・札幌市中央区",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬〜11月上旬",
+          "wantToGo": 1,
+          "wentAndLiked": 2,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e562736/"
+        },
+        {
+          "id": "ar0101e562738",
+          "name": "中島公園の紅葉",
+          "area": "北海道・札幌市中央区",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 7,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e562738/"
+        },
+        {
+          "id": "ar0101e562942",
+          "name": "北海道庁旧本庁舎前庭の紅葉",
+          "area": "北海道・札幌市中央区",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 0,
+          "wentAndLiked": 0,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e562942/"
+        },
+        {
+          "id": "ar0101e562733",
+          "name": "北大イチョウ並木の紅葉",
+          "area": "北海道・札幌市北区",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬〜11月上旬",
+          "wantToGo": 16,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e562733/"
+        },
+        {
+          "id": "ar0101e12947",
+          "name": "西岡公園の紅葉",
+          "area": "北海道・札幌市豊平区",
+          "koyoStart": "10月初旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e12947/"
+        },
+        {
+          "id": "ar0101e12904",
+          "name": "定山渓ダム下流園地の紅葉",
+          "area": "北海道・札幌市南区",
+          "koyoStart": "9月下旬",
+          "koyoPeak": "10月上旬～10月中旬",
+          "wantToGo": 6,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e12904/"
+        },
+        {
+          "id": "ar0101e12940",
+          "name": "定山渓(定山渓温泉)の紅葉",
+          "area": "北海道・札幌市南区",
+          "koyoStart": "9月下旬",
+          "koyoPeak": "10月上旬～10月中旬",
+          "wantToGo": 33,
+          "wentAndLiked": 25,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e12940/"
+        },
+        {
+          "id": "ar0101e12946",
+          "name": "国営滝野すずらん丘陵公園の紅葉",
+          "area": "北海道・札幌市南区",
+          "koyoStart": "10月初旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 3,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e12946/"
+        },
+        {
+          "id": "ar0101e12982",
+          "name": "定山渓(豊平峡ダム)の紅葉",
+          "area": "北海道・札幌市南区",
+          "koyoStart": "9月下旬",
+          "koyoPeak": "10月上旬～10月中旬",
+          "wantToGo": 11,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0101e12982/"
+        }
+      ]
     }
   ]
 }
