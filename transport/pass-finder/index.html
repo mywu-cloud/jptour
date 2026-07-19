@@ -1,47 +1,47 @@
 <!DOCTYPE html>
-  <html lang="zh-Hant">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>周遊券比較計算器 | 季節前線 Season Frontier</title>
-  <meta name="description" content="輸入行程城市與天數，自動比較 JR Pass 與各式周遊券，找出最省交通方案。">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  </head>
-  <body>
-  <script src="/assets/js/season.js"></script>
-  <header>
-  <a class="logo" href="/">季節前線 Season Frontier</a>
-  <nav>
-  <a href="/seasons/koyo/">紅葉地圖</a>
-  <a href="/regions/hokuriku/">北陸指南</a>
-  <a href="/transport/pass-finder/">周遊券比較</a>
-  <a href="/itineraries/hokuriku-autumn/">範例行程</a>
-  <a href="/tools/budget/">預算計算</a>
-  </nav>
-  </header>
-  <main>
-  <h1>🎫 周遊券比較計算器</h1>
-  <p>勾選你會造訪的城市與天數，立即比較各式周遊券與單程票組合，找出最省方案。（目前示範資料涵蓋北陸拱型路線，適用名古屋進出）</p>
-  <div class="card">
-  <label>預計停留天數</label>
-  <input type="number" id="trip-days" min="1" value="7">
-  <label>會造訪的城市</label>
-  <div class="checkgrid">
-  <label><input type="checkbox" class="city-check" value="nagoya"> 名古屋</label>
-  <label><input type="checkbox" class="city-check" value="kanazawa" checked> 金澤</label>
-  <label><input type="checkbox" class="city-check" value="toyama" checked> 富山</label>
-  <label><input type="checkbox" class="city-check" value="shirakawago" checked> 白川鄉</label>
-  <label><input type="checkbox" class="city-check" value="fukui"> 福井</label>
-  <label><input type="checkbox" class="city-check" value="takayama"> 高山</label>
-  <label><input type="checkbox" class="city-check" value="kyoto"> 京都</label>
-  <label><input type="checkbox" class="city-check" value="osaka"> 大阪</label>
-  </div>
-  <button class="primary" id="pf-calc-btn">開始比較</button>
-  <div id="pf-result"></div>
-  </div>
-  </main>
-  <footer>Season Frontier - 季節と地域を結ぶ旅の羅針盤</footer>
-  <script src="/assets/js/pass-finder.js"></script>
-  </body>
-  </html>
-  
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周遊券比較計算器 | 季節前線 Season Frontier</title>
+<meta name="description" content="輸入行程城市與天數，自動比較 JR Pass 與各式周遊券，找出最省交通方案。">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<script src="/assets/js/season.js"></script>
+<header>
+<a class="logo" href="/">季節前線 Season Frontier</a>
+<nav>
+<a href="/seasons/koyo/">紅葉前線</a>
+<a href="/seasons/sakura/">櫻花前線</a>
+<a href="/regions/kansai/">關西指南</a>
+<a href="/regions/kanto/">關東指南</a>
+<a href="/transport/pass-finder/">周遊券比較</a>
+<a href="/tools/budget/">預算計算</a>
+</nav>
+</header>
+<main>
+<h1>🎫 周遊券比較計算器</h1>
+<p>勾選你會造訪的城市與天數，立即比較各式周遊券與單程票組合，找出最省方案。（目前示範資料涵蓋北陸拱型路線，適用名古屋進出）</p>
+<div class="card">
+<label>預計停留天數</label>
+<input type="number" id="trip-days" min="1" value="7">
+<label>會造訪的城市</label>
+<div class="checkgrid">
+<label><input type="checkbox" class="city-check" value="nagoya"> 名古屋</label>
+<label><input type="checkbox" class="city-check" value="kanazawa" checked> 金澤</label>
+<label><input type="checkbox" class="city-check" value="toyama" checked> 富山</label>
+<label><input type="checkbox" class="city-check" value="shirakawago" checked> 白川鄉</label>
+<label><input type="checkbox" class="city-check" value="fukui"> 福井</label>
+<label><input type="checkbox" class="city-check" value="takayama"> 高山</label>
+<label><input type="checkbox" class="city-check" value="kyoto"> 京都</label>
+<label><input type="checkbox" class="city-check" value="osaka"> 大阪</label>
+</div>
+<button class="primary" id="pf-calc-btn">開始比較</button>
+<div id="pf-result"></div>
+</div>
+</main>
+<footer>Season Frontier - 季節と地域を結ぶ旅の羅針盤</footer>
+<script src="/assets/js/pass-finder.js"></script>
+</body>
+</html>
