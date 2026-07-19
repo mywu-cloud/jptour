@@ -1,0 +1,730 @@
+{
+  "region": "kanto",
+  "regionLabel": "關東",
+  "date": "2026-07-19",
+  "source": "koyo.walkerplus.com 各都道府県紅葉名所頁面(事實性資料:名稱/地點/例年色づき始め/例年見頃/人氣度數值,不轉載文章或照片)",
+  "prefectures": [
+    {
+      "name": "茨城県",
+      "typicalPeak": "11月上旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0308e160398",
+          "name": "偕楽園 もみじ谷の紅葉",
+          "area": "茨城県・水戸市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 58,
+          "wentAndLiked": 56,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e160398/"
+        },
+        {
+          "id": "ar0308e12634",
+          "name": "竜神峡・竜神大吊橋の紅葉",
+          "area": "茨城県・常陸太田市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 21,
+          "wentAndLiked": 42,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e12634/"
+        },
+        {
+          "id": "ar0308e12629",
+          "name": "花貫渓谷の紅葉",
+          "area": "茨城県・高萩市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 117,
+          "wentAndLiked": 127,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e12629/"
+        },
+        {
+          "id": "ar0308e12630",
+          "name": "花園渓谷の紅葉",
+          "area": "茨城県・北茨城市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 14,
+          "wentAndLiked": 33,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e12630/"
+        },
+        {
+          "id": "ar0308e12636",
+          "name": "佐白山の紅葉",
+          "area": "茨城県・笠間市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 17,
+          "wentAndLiked": 28,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e12636/"
+        },
+        {
+          "id": "ar0308e13099",
+          "name": "筑波山の紅葉",
+          "area": "茨城県・つくば市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 94,
+          "wentAndLiked": 100,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e13099/"
+        },
+        {
+          "id": "ar0308e160397",
+          "name": "国営ひたち海浜公園 みはらしの丘のコキアの紅葉",
+          "area": "茨城県・ひたちなか市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬",
+          "wantToGo": 13,
+          "wentAndLiked": 15,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e160397/"
+        },
+        {
+          "id": "ar0308e12639",
+          "name": "西蓮寺の紅葉",
+          "area": "茨城県・行方市",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 19,
+          "wentAndLiked": 35,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e12639/"
+        },
+        {
+          "id": "ar0308e13076",
+          "name": "永源寺(もみじ寺)の紅葉",
+          "area": "茨城県・久慈郡大子町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 48,
+          "wentAndLiked": 66,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e13076/"
+        },
+        {
+          "id": "ar0308e13077",
+          "name": "奥久慈渓谷の紅葉",
+          "area": "茨城県・久慈郡大子町",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 9,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0308e13077/"
+        }
+      ]
+    },
+    {
+      "name": "栃木県",
+      "typicalPeak": "10月中旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0309e393049",
+          "name": "栃木県中央公園の紅葉",
+          "area": "栃木県中央公園の紅葉",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～12月上旬",
+          "wantToGo": 9,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e393049/"
+        },
+        {
+          "id": "ar0309e393419",
+          "name": "旭町の大イチョウの紅葉",
+          "area": "栃木県・宇都宮市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～中旬",
+          "wantToGo": 1,
+          "wentAndLiked": 2,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e393419/"
+        },
+        {
+          "id": "ar0309e393636",
+          "name": "宇都宮駅東公園の紅葉",
+          "area": "栃木県・宇都宮市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 4,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e393636/"
+        },
+        {
+          "id": "ar0309e12641",
+          "name": "織姫公園もみじ谷の紅葉",
+          "area": "栃木県・足利市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 46,
+          "wentAndLiked": 62,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e12641/"
+        },
+        {
+          "id": "ar0309e393037",
+          "name": "史跡足利学校の紅葉",
+          "area": "栃木県・足利市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 3,
+          "wentAndLiked": 7,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e393037/"
+        },
+        {
+          "id": "ar0309e154478",
+          "name": "太平山の紅葉",
+          "area": "栃木県・栃木市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 29,
+          "wentAndLiked": 60,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e154478/"
+        },
+        {
+          "id": "ar0309e154481",
+          "name": "蓬莱山の紅葉",
+          "area": "栃木県・佐野市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 8,
+          "wentAndLiked": 14,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e154481/"
+        },
+        {
+          "id": "ar0309e12643",
+          "name": "大芦渓谷の紅葉",
+          "area": "栃木県・鹿沼市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬",
+          "wantToGo": 16,
+          "wentAndLiked": 23,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e12643/"
+        },
+        {
+          "id": "ar0309e154480",
+          "name": "古峰ヶ原高原の紅葉",
+          "area": "栃木県・鹿沼市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 17,
+          "wentAndLiked": 20,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e154480/"
+        },
+        {
+          "id": "ar0309e415960",
+          "name": "古峯神社の紅葉",
+          "area": "栃木県・鹿沼市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 12,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0309e415960/"
+        }
+      ]
+    },
+    {
+      "name": "群馬県",
+      "typicalPeak": "10月中旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0310e12923",
+          "name": "赤城山の紅葉",
+          "area": "群馬県・前橋市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月上旬～10月下旬",
+          "wantToGo": 55,
+          "wentAndLiked": 85,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e12923/"
+        },
+        {
+          "id": "ar0310e12650",
+          "name": "少林山達磨寺の紅葉",
+          "area": "群馬県・高崎市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 26,
+          "wentAndLiked": 40,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e12650/"
+        },
+        {
+          "id": "ar0310e12651",
+          "name": "徳明園の紅葉",
+          "area": "群馬県・高崎市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 34,
+          "wentAndLiked": 48,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e12651/"
+        },
+        {
+          "id": "ar0310e12849",
+          "name": "榛名山・榛名湖の紅葉",
+          "area": "群馬県・高崎市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 30,
+          "wentAndLiked": 45,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e12849/"
+        },
+        {
+          "id": "ar0310e154486",
+          "name": "桐生川上流の紅葉",
+          "area": "群馬県・桐生市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 12,
+          "wentAndLiked": 25,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e154486/"
+        },
+        {
+          "id": "ar0310e445918",
+          "name": "吹割の滝の紅葉",
+          "area": "群馬県・沼田市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 20,
+          "wentAndLiked": 31,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e445918/"
+        },
+        {
+          "id": "ar0310e154488",
+          "name": "伊香保温泉の紅葉",
+          "area": "群馬県・渋川市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 54,
+          "wentAndLiked": 52,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e154488/"
+        },
+        {
+          "id": "ar0310e154484",
+          "name": "桜山公園の紅葉",
+          "area": "群馬県・藤岡市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 6,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e154484/"
+        },
+        {
+          "id": "ar0310e13069",
+          "name": "妙義山の紅葉",
+          "area": "群馬県・富岡市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 26,
+          "wentAndLiked": 36,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0310e13069/"
+        }
+      ]
+    },
+    {
+      "name": "埼玉県",
+      "typicalPeak": "10月下旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar0311e372623",
+          "name": "熊谷スポーツ文化公園の紅葉",
+          "area": "埼玉県・熊谷市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 6,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e372623/"
+        },
+        {
+          "id": "ar0311e12857",
+          "name": "中津峡の紅葉",
+          "area": "埼玉県・秩父市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 20,
+          "wentAndLiked": 16,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e12857/"
+        },
+        {
+          "id": "ar0311e154490",
+          "name": "浦山ダム周辺の紅葉",
+          "area": "埼玉県・秩父市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 5,
+          "wentAndLiked": 7,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e154490/"
+        },
+        {
+          "id": "ar0311e154496",
+          "name": "秩父ミューズパークの紅葉",
+          "area": "埼玉県・秩父市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 46,
+          "wentAndLiked": 35,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e154496/"
+        },
+        {
+          "id": "ar0311e373593",
+          "name": "大血川渓谷(金蔵落し)の紅葉",
+          "area": "埼玉県・秩父市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 13,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e373593/"
+        },
+        {
+          "id": "ar0311e373594",
+          "name": "滝川渓谷(埼玉県)の紅葉",
+          "area": "埼玉県)の紅葉",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 3,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e373594/"
+        },
+        {
+          "id": "ar0311e373597",
+          "name": "三峰山の紅葉",
+          "area": "埼玉県・秩父市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e373597/"
+        },
+        {
+          "id": "ar0311e393175",
+          "name": "滝沢ダムの紅葉",
+          "area": "埼玉県・秩父市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 7,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e393175/"
+        },
+        {
+          "id": "ar0311e393039",
+          "name": "多聞院の紅葉",
+          "area": "埼玉県・所沢市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～12月上旬",
+          "wantToGo": 10,
+          "wentAndLiked": 24,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e393039/"
+        },
+        {
+          "id": "ar0311e393067",
+          "name": "所沢航空記念公園の紅葉",
+          "area": "埼玉県・所沢市",
+          "koyoStart": "11月上旬～12月上旬",
+          "koyoPeak": "11月上旬～12月上旬",
+          "wantToGo": 7,
+          "wentAndLiked": 15,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0311e393067/"
+        }
+      ]
+    },
+    {
+      "name": "千葉県",
+      "typicalPeak": "11月中旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar0312e445470",
+          "name": "千葉公園の紅葉",
+          "area": "千葉県・千葉市中央区",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～12月上旬",
+          "wantToGo": 15,
+          "wentAndLiked": 23,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e445470/"
+        },
+        {
+          "id": "ar0312e446505",
+          "name": "青葉の森公園の紅葉",
+          "area": "千葉県・千葉市中央区",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～12月上旬",
+          "wantToGo": 5,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e446505/"
+        },
+        {
+          "id": "ar0312e447400",
+          "name": "石橋記念公園の紅葉",
+          "area": "千葉県・千葉市中央区",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 7,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e447400/"
+        },
+        {
+          "id": "ar0312e446730",
+          "name": "泉自然公園の紅葉",
+          "area": "千葉県・千葉市若葉区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 22,
+          "wentAndLiked": 21,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e446730/"
+        },
+        {
+          "id": "ar0312e446724",
+          "name": "見浜園の紅葉",
+          "area": "千葉県・千葉市美浜区",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 12,
+          "wentAndLiked": 22,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e446724/"
+        },
+        {
+          "id": "ar0312e445468",
+          "name": "市川市動植物園・自然観察園の紅葉",
+          "area": "千葉県・市川市",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 5,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e445468/"
+        },
+        {
+          "id": "ar0312e447404",
+          "name": "葛飾八幡宮の紅葉",
+          "area": "千葉県・市川市",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 14,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e447404/"
+        },
+        {
+          "id": "ar0312e445469",
+          "name": "ふなばしアンデルセン公園の紅葉",
+          "area": "千葉県・船橋市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 8,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e445469/"
+        },
+        {
+          "id": "ar0312e446157",
+          "name": "千葉県立船橋県民の森の紅葉",
+          "area": "千葉県立船橋県民の森の紅葉",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 3,
+          "wentAndLiked": 7,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e446157/"
+        },
+        {
+          "id": "ar0312e13255",
+          "name": "本土寺の紅葉",
+          "area": "千葉県・松戸市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬",
+          "wantToGo": 113,
+          "wentAndLiked": 152,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0312e13255/"
+        }
+      ]
+    },
+    {
+      "name": "東京都",
+      "typicalPeak": "10月下旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar0313e154521",
+          "name": "日比谷公園の紅葉",
+          "area": "東京都・千代田区",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 25,
+          "wentAndLiked": 36,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e154521/"
+        },
+        {
+          "id": "ar0313e154522",
+          "name": "靖国神社の紅葉",
+          "area": "東京都・千代田区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 30,
+          "wentAndLiked": 44,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e154522/"
+        },
+        {
+          "id": "ar0313e393170",
+          "name": "皇居東御苑の紅葉",
+          "area": "東京都・千代田区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月中旬",
+          "wantToGo": 48,
+          "wentAndLiked": 49,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e393170/"
+        },
+        {
+          "id": "ar0313e154508",
+          "name": "浜離宮恩賜庭園の紅葉",
+          "area": "東京都・中央区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 34,
+          "wentAndLiked": 29,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e154508/"
+        },
+        {
+          "id": "ar0313e154517",
+          "name": "芝公園の紅葉",
+          "area": "東京都・港区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月下旬",
+          "wantToGo": 14,
+          "wentAndLiked": 24,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e154517/"
+        },
+        {
+          "id": "ar0313e154520",
+          "name": "国立科学博物館附属自然教育園の紅葉",
+          "area": "東京都・港区",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月中旬",
+          "wantToGo": 55,
+          "wentAndLiked": 83,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e154520/"
+        },
+        {
+          "id": "ar0313e154523",
+          "name": "東京都庭園美術館の紅葉",
+          "area": "東京都庭園美術館の紅葉",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "12月上旬",
+          "wantToGo": 43,
+          "wentAndLiked": 68,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e154523/"
+        },
+        {
+          "id": "ar0313e372621",
+          "name": "有栖川宮記念公園の紅葉",
+          "area": "東京都・港区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 14,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e372621/"
+        },
+        {
+          "id": "ar0313e372632",
+          "name": "旧芝離宮恩賜庭園の紅葉",
+          "area": "東京都・港区",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 7,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e372632/"
+        },
+        {
+          "id": "ar0313e12672",
+          "name": "明治神宮外苑の紅葉",
+          "area": "東京都・新宿区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 52,
+          "wentAndLiked": 45,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0313e12672/"
+        }
+      ]
+    },
+    {
+      "name": "神奈川県",
+      "typicalPeak": "10月下旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar0314e392382",
+          "name": "県立三ツ池公園の紅葉",
+          "area": "神奈川県・横浜市鶴見区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 15,
+          "wentAndLiked": 26,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e392382/"
+        },
+        {
+          "id": "ar0314e123975",
+          "name": "三溪園の紅葉",
+          "area": "神奈川県・横浜市中区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月中旬",
+          "wantToGo": 71,
+          "wentAndLiked": 86,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e123975/"
+        },
+        {
+          "id": "ar0314e373603",
+          "name": "日本大通りの紅葉",
+          "area": "神奈川県・横浜市中区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 17,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e373603/"
+        },
+        {
+          "id": "ar0314e373745",
+          "name": "横浜公園の紅葉",
+          "area": "神奈川県・横浜市中区",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 13,
+          "wentAndLiked": 21,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e373745/"
+        },
+        {
+          "id": "ar0314e393173",
+          "name": "根岸森林公園の紅葉",
+          "area": "神奈川県・横浜市中区",
+          "koyoStart": "11月上旬〜12月上旬",
+          "koyoPeak": "11月上旬～12月上旬",
+          "wantToGo": 11,
+          "wentAndLiked": 16,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e393173/"
+        },
+        {
+          "id": "ar0314e394013",
+          "name": "山下公園通りの紅葉",
+          "area": "神奈川県・横浜市中区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 10,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e394013/"
+        },
+        {
+          "id": "ar0314e393062",
+          "name": "保土ケ谷公園の紅葉",
+          "area": "神奈川県・横浜市保土ケ谷区",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 2,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e393062/"
+        },
+        {
+          "id": "ar0314e154538",
+          "name": "横浜市立金沢動物園および金沢自然公園の紅葉",
+          "area": "神奈川県・横浜市金沢区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月中旬",
+          "wantToGo": 14,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e154538/"
+        },
+        {
+          "id": "ar0314e392572",
+          "name": "久良岐公園の紅葉",
+          "area": "神奈川県・横浜市港南区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 5,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0314e392572/"
+        }
+      ]
+    }
+  ]
+}
