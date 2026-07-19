@@ -1,55 +1,55 @@
 <!DOCTYPE html>
-  <html lang="zh-Hant">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>旅費預算計算機 | 季節前線 Season Frontier</title>
-  <meta name="description" content="輸入天數、住宿等級、機票與人數，快速試算日本旅遊總花費。">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  </head>
-  <body>
-  <script src="/assets/js/season.js"></script>
-  <header>
-  <a class="logo" href="/">季節前線 Season Frontier</a>
-  <nav>
-  <a href="/seasons/koyo/">紅葉地圖</a>
-  <a href="/regions/hokuriku/">北陸指南</a>
-  <a href="/transport/pass-finder/">周遊券比較</a>
-  <a href="/itineraries/hokuriku-autumn/">範例行程</a>
-  <a href="/tools/budget/">預算計算</a>
-  </nav>
-  </header>
-  <main>
-  <h1>💰 旅費預算計算機</h1>
-  <p id="fx-rate" class="disclaimer">正在查詢即時匯率...</p>
-  <div class="card">
-  <label>旅遊天數</label>
-  <input type="number" id="b-days" min="1" value="7">
-  <label>同行人數</label>
-  <input type="number" id="b-travelers" min="1" value="2">
-  <label>住宿等級</label>
-  <select id="b-hotel">
-  <option value="budget">經濟型（每房每晚約 NT$1,200）</option>
-  <option value="mid" selected>中價位（每房每晚約 NT$2,600）</option>
-  <option value="luxury">高級（每房每晚約 NT$5,500）</option>
-  </select>
-  <label>主要旅遊地區物價水準</label>
-  <select id="b-city">
-  <option value="tokyo">東京都會區（物價較高）</option>
-  <option value="osaka">大阪／關西（物價中高）</option>
-  <option value="hokuriku" selected>北陸／地方城市（物價中等）</option>
-  <option value="other">其他地方城市（物價較低）</option>
-  </select>
-  <label>來回機票（每人，新台幣）</label>
-  <input type="number" id="b-flight" min="0" value="12000">
-  <label>另有日幣現金需換算（選填，日圓）</label>
-  <input type="number" id="b-jpy" min="0" value="0">
-  <button class="primary" id="b-calc-btn">計算預算</button>
-  <div id="budget-result"></div>
-  </div>
-  </main>
-  <footer>Season Frontier - 季節と地域を結ぶ旅の羅針盤</footer>
-  <script src="/assets/js/budget.js"></script>
-  </body>
-  </html>
-  
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旅費預算計算機 | 季節前線 Season Frontier</title>
+<meta name="description" content="輸入天數、住宿等級、機票與人數，快速試算日本旅遊總花費。">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<script src="/assets/js/season.js"></script>
+<header>
+<a class="logo" href="/">季節前線 Season Frontier</a>
+<nav>
+<a href="/seasons/koyo/">紅葉前線</a>
+<a href="/seasons/sakura/">櫻花前線</a>
+<a href="/regions/kansai/">關西指南</a>
+<a href="/regions/kanto/">關東指南</a>
+<a href="/transport/pass-finder/">周遊券比較</a>
+<a href="/tools/budget/">預算計算</a>
+</nav>
+</header>
+<main>
+<h1>💰 旅費預算計算機</h1>
+<p id="fx-rate" class="disclaimer">正在查詢即時匯率...</p>
+<div class="card">
+<label>旅遊天數</label>
+<input type="number" id="b-days" min="1" value="7">
+<label>同行人數</label>
+<input type="number" id="b-travelers" min="1" value="2">
+<label>住宿等級</label>
+<select id="b-hotel">
+<option value="budget">經濟型（每房每晚約 NT$1,200）</option>
+<option value="mid" selected>中價位（每房每晚約 NT$2,600）</option>
+<option value="luxury">高級（每房每晚約 NT$5,500）</option>
+</select>
+<label>主要旅遊地區物價水準</label>
+<select id="b-city">
+<option value="tokyo">東京都會區（物價較高）</option>
+<option value="osaka">大阪／關西（物價中高）</option>
+<option value="hokuriku" selected>北陸／地方城市（物價中等）</option>
+<option value="other">其他地方城市（物價較低）</option>
+</select>
+<label>來回機票（每人，新台幣）</label>
+<input type="number" id="b-flight" min="0" value="12000">
+<label>另有日幣現金需換算（選填，日圓）</label>
+<input type="number" id="b-jpy" min="0" value="0">
+<button class="primary" id="b-calc-btn">計算預算</button>
+<div id="budget-result"></div>
+</div>
+</main>
+<footer>Season Frontier - 季節と地域を結ぶ旅の羅針盤</footer>
+<script src="/assets/js/budget.js"></script>
+</body>
+</html>
