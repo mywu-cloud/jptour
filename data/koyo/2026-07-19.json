@@ -1,0 +1,467 @@
+{
+  "date": "2026-07-19",
+  "source": "koyo.walkerplus.com 都道府県別頁面彙整(例年見頃資料,人工整理,非即時狀態;2026年紅葉季節尚未開始,狀態暫以「青葉」表示)",
+  "note": "本檔案為全國46都道府県(不含沖繩,無明顯紅葉季)例年見頃區間彙整,取代原本北陸5筆示範種子資料。",
+  "spots": [
+    {
+      "id": "pref-0101",
+      "name": "北海道",
+      "region": "北海道",
+      "lat": 43.0642,
+      "lng": 141.3469,
+      "status": "青葉",
+      "typicalPeak": "9月中旬–10月下旬",
+      "listedSpotsOnSite": 59
+    },
+    {
+      "id": "pref-0202",
+      "name": "青森県",
+      "region": "東北",
+      "lat": 40.8244,
+      "lng": 140.74,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月上旬",
+      "listedSpotsOnSite": 16
+    },
+    {
+      "id": "pref-0203",
+      "name": "岩手県",
+      "region": "東北",
+      "lat": 39.7036,
+      "lng": 141.1527,
+      "status": "青葉",
+      "typicalPeak": "9月下旬–11月下旬",
+      "listedSpotsOnSite": 23
+    },
+    {
+      "id": "pref-0204",
+      "name": "宮城県",
+      "region": "東北",
+      "lat": 38.2682,
+      "lng": 140.8694,
+      "status": "青葉",
+      "typicalPeak": "10月上旬–11月下旬",
+      "listedSpotsOnSite": 22
+    },
+    {
+      "id": "pref-0205",
+      "name": "秋田県",
+      "region": "東北",
+      "lat": 39.7186,
+      "lng": 140.1024,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月中旬",
+      "listedSpotsOnSite": 28
+    },
+    {
+      "id": "pref-0206",
+      "name": "山形県",
+      "region": "東北",
+      "lat": 38.2404,
+      "lng": 140.3633,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月下旬",
+      "listedSpotsOnSite": 22
+    },
+    {
+      "id": "pref-0207",
+      "name": "福島県",
+      "region": "東北",
+      "lat": 37.7503,
+      "lng": 140.4676,
+      "status": "青葉",
+      "typicalPeak": "9月下旬–11月下旬",
+      "listedSpotsOnSite": 37
+    },
+    {
+      "id": "pref-0308",
+      "name": "茨城県",
+      "region": "関東",
+      "lat": 36.3418,
+      "lng": 140.4468,
+      "status": "青葉",
+      "typicalPeak": "11月上旬–11月下旬",
+      "listedSpotsOnSite": 11
+    },
+    {
+      "id": "pref-0309",
+      "name": "栃木県",
+      "region": "関東",
+      "lat": 36.5658,
+      "lng": 139.8836,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月下旬",
+      "listedSpotsOnSite": 51
+    },
+    {
+      "id": "pref-0310",
+      "name": "群馬県",
+      "region": "関東",
+      "lat": 36.3906,
+      "lng": 139.0608,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月下旬",
+      "listedSpotsOnSite": 27
+    },
+    {
+      "id": "pref-0311",
+      "name": "埼玉県",
+      "region": "関東",
+      "lat": 35.8617,
+      "lng": 139.6455,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 27
+    },
+    {
+      "id": "pref-0312",
+      "name": "千葉県",
+      "region": "関東",
+      "lat": 35.6073,
+      "lng": 140.1063,
+      "status": "青葉",
+      "typicalPeak": "11月中旬–12月上旬",
+      "listedSpotsOnSite": 27
+    },
+    {
+      "id": "pref-0313",
+      "name": "東京都",
+      "region": "関東",
+      "lat": 35.6895,
+      "lng": 139.6917,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 57
+    },
+    {
+      "id": "pref-0314",
+      "name": "神奈川県",
+      "region": "関東",
+      "lat": 35.4437,
+      "lng": 139.638,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 57
+    },
+    {
+      "id": "pref-0415",
+      "name": "新潟県",
+      "region": "甲信越",
+      "lat": 37.9026,
+      "lng": 139.0232,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月中旬",
+      "listedSpotsOnSite": 30
+    },
+    {
+      "id": "pref-0419",
+      "name": "山梨県",
+      "region": "甲信越",
+      "lat": 35.6642,
+      "lng": 138.5684,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月下旬",
+      "listedSpotsOnSite": 27
+    },
+    {
+      "id": "pref-0420",
+      "name": "長野県",
+      "region": "甲信越",
+      "lat": 36.6513,
+      "lng": 138.181,
+      "status": "青葉",
+      "typicalPeak": "9月下旬–11月下旬",
+      "listedSpotsOnSite": 61
+    },
+    {
+      "id": "pref-0516",
+      "name": "富山県",
+      "region": "北陸",
+      "lat": 36.6953,
+      "lng": 137.2113,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月下旬",
+      "listedSpotsOnSite": 11
+    },
+    {
+      "id": "pref-0517",
+      "name": "石川県",
+      "region": "北陸",
+      "lat": 36.5613,
+      "lng": 136.6562,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 16
+    },
+    {
+      "id": "pref-0518",
+      "name": "福井県",
+      "region": "北陸",
+      "lat": 36.0652,
+      "lng": 136.2216,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–11月下旬",
+      "listedSpotsOnSite": 9
+    },
+    {
+      "id": "pref-0621",
+      "name": "岐阜県",
+      "region": "東海",
+      "lat": 35.3912,
+      "lng": 136.7223,
+      "status": "青葉",
+      "typicalPeak": "10月上旬–11月下旬",
+      "listedSpotsOnSite": 43
+    },
+    {
+      "id": "pref-0622",
+      "name": "静岡県",
+      "region": "東海",
+      "lat": 34.9756,
+      "lng": 138.3828,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 36
+    },
+    {
+      "id": "pref-0623",
+      "name": "愛知県",
+      "region": "東海",
+      "lat": 35.1815,
+      "lng": 136.9066,
+      "status": "青葉",
+      "typicalPeak": "11月上旬–12月上旬",
+      "listedSpotsOnSite": 27
+    },
+    {
+      "id": "pref-0624",
+      "name": "三重県",
+      "region": "東海",
+      "lat": 34.7303,
+      "lng": 136.5086,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 9
+    },
+    {
+      "id": "pref-0725",
+      "name": "滋賀県",
+      "region": "関西",
+      "lat": 35.0045,
+      "lng": 135.8686,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 32
+    },
+    {
+      "id": "pref-0726",
+      "name": "京都府",
+      "region": "関西",
+      "lat": 35.0116,
+      "lng": 135.7681,
+      "status": "青葉",
+      "typicalPeak": "11月中旬–12月上旬",
+      "listedSpotsOnSite": 131
+    },
+    {
+      "id": "pref-0727",
+      "name": "大阪府",
+      "region": "関西",
+      "lat": 34.6937,
+      "lng": 135.5023,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 13
+    },
+    {
+      "id": "pref-0728",
+      "name": "兵庫県",
+      "region": "関西",
+      "lat": 34.6901,
+      "lng": 135.1955,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 41
+    },
+    {
+      "id": "pref-0729",
+      "name": "奈良県",
+      "region": "関西",
+      "lat": 34.6851,
+      "lng": 135.8048,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 33
+    },
+    {
+      "id": "pref-0730",
+      "name": "和歌山県",
+      "region": "関西",
+      "lat": 34.2261,
+      "lng": 135.1675,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 11
+    },
+    {
+      "id": "pref-0831",
+      "name": "鳥取県",
+      "region": "中国",
+      "lat": 35.5039,
+      "lng": 134.2377,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月下旬",
+      "listedSpotsOnSite": 7
+    },
+    {
+      "id": "pref-0832",
+      "name": "島根県",
+      "region": "中国",
+      "lat": 35.4723,
+      "lng": 133.0505,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 17
+    },
+    {
+      "id": "pref-0833",
+      "name": "岡山県",
+      "region": "中国",
+      "lat": 34.6551,
+      "lng": 133.9195,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 20
+    },
+    {
+      "id": "pref-0834",
+      "name": "広島県",
+      "region": "中国",
+      "lat": 34.3853,
+      "lng": 132.4553,
+      "status": "青葉",
+      "typicalPeak": "10月中旬–11月中旬",
+      "listedSpotsOnSite": 19
+    },
+    {
+      "id": "pref-0835",
+      "name": "山口県",
+      "region": "中国",
+      "lat": 34.1859,
+      "lng": 131.4714,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 14
+    },
+    {
+      "id": "pref-0936",
+      "name": "徳島県",
+      "region": "四国",
+      "lat": 34.0658,
+      "lng": 134.5593,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–11月下旬",
+      "listedSpotsOnSite": 7
+    },
+    {
+      "id": "pref-0937",
+      "name": "香川県",
+      "region": "四国",
+      "lat": 34.3401,
+      "lng": 134.0434,
+      "status": "青葉",
+      "typicalPeak": "11月上旬–12月上旬",
+      "listedSpotsOnSite": 5
+    },
+    {
+      "id": "pref-0938",
+      "name": "愛媛県",
+      "region": "四国",
+      "lat": 33.8416,
+      "lng": 132.7657,
+      "status": "青葉",
+      "typicalPeak": "11月中旬–12月上旬",
+      "listedSpotsOnSite": 14
+    },
+    {
+      "id": "pref-0939",
+      "name": "高知県",
+      "region": "四国",
+      "lat": 33.5597,
+      "lng": 133.5311,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–11月下旬",
+      "listedSpotsOnSite": 5
+    },
+    {
+      "id": "pref-1040",
+      "name": "福岡県",
+      "region": "九州",
+      "lat": 33.5904,
+      "lng": 130.4017,
+      "status": "青葉",
+      "typicalPeak": "11月上旬–12月上旬",
+      "listedSpotsOnSite": 32
+    },
+    {
+      "id": "pref-1041",
+      "name": "佐賀県",
+      "region": "九州",
+      "lat": 33.2494,
+      "lng": 130.2988,
+      "status": "青葉",
+      "typicalPeak": "11月上旬–12月上旬",
+      "listedSpotsOnSite": 9
+    },
+    {
+      "id": "pref-1042",
+      "name": "長崎県",
+      "region": "九州",
+      "lat": 32.7503,
+      "lng": 129.8779,
+      "status": "青葉",
+      "typicalPeak": "11月中旬–12月上旬",
+      "listedSpotsOnSite": 7
+    },
+    {
+      "id": "pref-1043",
+      "name": "熊本県",
+      "region": "九州",
+      "lat": 32.7898,
+      "lng": 130.7417,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 11
+    },
+    {
+      "id": "pref-1044",
+      "name": "大分県",
+      "region": "九州",
+      "lat": 33.2382,
+      "lng": 131.6126,
+      "status": "青葉",
+      "typicalPeak": "10月下旬–12月上旬",
+      "listedSpotsOnSite": 16
+    },
+    {
+      "id": "pref-1045",
+      "name": "宮崎県",
+      "region": "九州",
+      "lat": 31.9111,
+      "lng": 131.4239,
+      "status": "青葉",
+      "typicalPeak": "11月上旬–11月下旬",
+      "listedSpotsOnSite": 6
+    },
+    {
+      "id": "pref-1046",
+      "name": "鹿児島県",
+      "region": "九州",
+      "lat": 31.5966,
+      "lng": 130.5571,
+      "status": "青葉",
+      "typicalPeak": "11月上旬–12月上旬",
+      "listedSpotsOnSite": 7
+    }
+  ]
+}
