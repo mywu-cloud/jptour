@@ -104,25 +104,25 @@
 
 ```
 [Data Pipeline]                    [Data Store]
-GitHub Actions(排程)          →    Repo 內 JSON(append-only)
-Playwright 爬取紅葉/櫻花前線        依日期分檔:koyo/2026-07-09.json
+GitHub Actions(排程)              →  Repo 內 JSON(append-only)
+Playwright 爬取紅葉/櫻花前線         依日期分檔:koyo/2026-07-09.json
 每日 06:00 JST 執行                杜絕覆寫問題,天然保留歷史
-失敗自動 retry + Issue 告警        大檔改用 Cloudflare KV/R2
-        │
-        ▼ git commit 觸發自動部署 ▼
-        │
+失敗自動 retry + Issue 告警         大檔改用 Cloudflare KV/R2
+         │
+         ▼ git commit 觸發自動部署 ▼
+         │
 [Static Site]                      [Edge API]
 Astro + Cloudflare Pages           Cloudflare Workers
 內容頁純靜態(零 JS 負擔)            匯率代理、表單、訂閱通知
 工具頁掛 island 元件                所有端點加 API_KEY 驗證
-繁中內容、語意化 URL                 通知含 dedup key(修正舊缺陷)
-        │
-        ▼ 客戶端瀏覽器 ▼
-        │
+繁中內容、語意化 URL                通知含 dedup key(修正舊缺陷)
+         │
+         ▼ 客戶端瀏覽器 ▼
+         │
 [Client Fetch]                     [Analytics]
 瀏覽器端取數                        Cloudflare Web Analytics
-匯率、天氣 API 由前端直呼             免費、無 cookie、GDPR 友善
-(同 FinMind 儀表板模式)              觀察工具使用率決定開發優先序
+匯率、天氣 API 由前端直呼            免費、無 cookie、GDPR 友善
+(同 FinMind 儀表板模式)             觀察工具使用率決定開發優先序
 ```
 
 ### 為何選 Astro 而非 Next.js
@@ -203,6 +203,5 @@ Astro + Cloudflare Pages           Cloudflare Workers
 
 ## 9. 工作慣例
 
-- 偏好自主執行,不需要每一步都詢問確認,直接產出可用的完整成品
 - 深色主題為預設美學風格(與其他儀表板專案一致)
 - 交付前確保是 production-ready,而非草稿
