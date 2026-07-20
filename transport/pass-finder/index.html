@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>周遊券比較計算器 | 季節前線 Season Frontier</title>
-<meta name="description" content="輸入行程城市與天數，自動比較 JR Pass 與各式周遊券，找出最省交通方案。">
+<title>周遊券介紹 | 季節前線 Season Frontier</title>
+<meta name="description" content="認識JR東日本、JR西日本、JR九州等各式周遊券的天數、票價與涵蓋範圍。">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -14,17 +14,16 @@
 <nav>
 <a href="/seasons/koyo/">紅葉前線</a>
 <a href="/seasons/sakura/">櫻花前線</a>
-<a href="/transport/pass-finder/">周遊券比較</a>
+<a href="/transport/pass-finder/">周遊券介紹</a>
 <a href="/tools/budget/">預算計算</a>
 </nav>
 </header>
 <main>
-<h1>🎫 周遊券比較計算器</h1>
-<p>勾選你會造訪的城市與天數，立即比較各式周遊券與單程票組合，找出最省方案。</p>
+<h1>🎫 周遊券介紹</h1>
 
 <section class="card">
 <h2>周遊券怎麼選？常見周遊券特色一覽</h2>
-<p>JR東日本與JR西日本針對訪日旅客推出多款區域周遊券，天數、票價與可搭乘範圍各不相同。以下整理幾款常見選擇，詳細規則與最新票價請點入官方頁面確認。</p>
+<p>JR東日本、JR西日本與JR九州針對訪日旅客推出多款區域周遊券，天數、票價與可搭乘範圍各不相同。以下整理幾款常見選擇，詳細規則與最新票價請點入官方頁面確認。</p>
 <div class="pass-grid">
 <div class="pass-card">
 <h3>JR東日本鐵路周遊券（東北地區）</h3>
@@ -56,27 +55,16 @@
 <p>只在富山、石川、福井三縣移動最划算，含北陸新幹線敦賀至黑部宇奈月溫泉區間自由席與在來線。</p>
 <a href="https://www.westjr.co.jp/travel-information/tc/tickets-passes/jrwest-rail-pass/hokuriku/" target="_blank" rel="noopener">查看JR西日本官網 →</a>
 </div>
+<div class="pass-card">
+<h3>JR九州鐵路周遊券</h3>
+<span class="pass-price">3天 ¥22,000起（依範圍與天數）</span>
+<p>依範圍分為全九州、北部九州、南部九州三種版本，效期3～7天可選，可搭乘新幹線、特急與普通列車指定席。</p>
+<a href="https://www.jrkyushu.co.jp/chinese/railpass/index.html" target="_blank" rel="noopener">查看JR九州官網 →</a>
 </div>
-<p class="disclaimer">以上票價僅供參考，實際規則與金額請以 <a href="https://www.jreast.co.jp/zh-CHT/multi/pass/eastpass.html" target="_blank" rel="noopener">JR東日本</a>、<a href="https://www.westjr.co.jp/travel-information/tc/tickets-passes/jrwest-rail-pass/" target="_blank" rel="noopener">JR西日本</a> 官網公告為準。</p>
+</div>
+<p class="disclaimer">以上票價僅供參考，實際規則與金額請以 <a href="https://www.jreast.co.jp/zh-CHT/multi/pass/eastpass.html" target="_blank" rel="noopener">JR東日本</a>、<a href="https://www.westjr.co.jp/travel-information/tc/tickets-passes/jrwest-rail-pass/" target="_blank" rel="noopener">JR西日本</a>、<a href="https://www.jrkyushu.co.jp/chinese/" target="_blank" rel="noopener">JR九州</a> 官網公告為準。</p>
 </section>
-
-<div class="card">
-<label>會造訪的城市</label>
-<div class="checkgrid">
-<label><input type="checkbox" class="city-check" value="nagoya"> 名古屋</label>
-<label><input type="checkbox" class="city-check" value="kanazawa" checked> 金澤</label>
-<label><input type="checkbox" class="city-check" value="toyama" checked> 富山</label>
-<label><input type="checkbox" class="city-check" value="shirakawago" checked> 白川鄉</label>
-<label><input type="checkbox" class="city-check" value="fukui"> 福井</label>
-<label><input type="checkbox" class="city-check" value="takayama"> 高山</label>
-<label><input type="checkbox" class="city-check" value="kyoto"> 京都</label>
-<label><input type="checkbox" class="city-check" value="osaka"> 大阪</label>
-</div>
-<button class="primary" id="pf-calc-btn">開始比較</button>
-<div id="pf-result"></div>
-</div>
 </main>
 <footer>Season Frontier - 季節と地域を結ぶ旅の羅針盤</footer>
-<script src="/assets/js/pass-finder.js"></script>
 </body>
 </html>
