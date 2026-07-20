@@ -2,42 +2,639 @@
   "region": "kyushu",
   "regionLabel": "九州",
   "date": "2026-07-19",
-  "source": "koyo.walkerplus.com 都道府県別頁面彙整（例年見頃資料；本區域逐點名所清單製作中，僅提供縣別例年見頃平均）",
+  "source": "koyo.walkerplus.com 各都道府県紅葉名所頁面(事實性資料:名稱/地點/例年色づき始め/例年見頃/人氣度數值,不轉載文章或照片)",
   "prefectures": [
     {
       "name": "福岡県",
-      "typicalPeak": "11月上旬–12月上旬",
-      "spots": []
+      "typicalPeak": "11月上旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar1040e154775",
+          "name": "白野江植物公園の紅葉",
+          "area": "福岡県・北九州市門司区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 16,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e154775/"
+        },
+        {
+          "id": "ar1040e478570",
+          "name": "北九州銀行レトロライン潮風号沿線の紅葉",
+          "area": "福岡県・北九州市門司区",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 9,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e478570/"
+        },
+        {
+          "id": "ar1040e154776",
+          "name": "勝山公園の紅葉",
+          "area": "福岡県・北九州市小倉北区",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～12月上旬",
+          "wantToGo": 7,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e154776/"
+        },
+        {
+          "id": "ar1040e323107",
+          "name": "小倉城庭園の紅葉",
+          "area": "福岡県・北九州市小倉北区",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 9,
+          "wentAndLiked": 10,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e323107/"
+        },
+        {
+          "id": "ar1040e478566",
+          "name": "皿倉山・皿倉山ケーブルカーの紅葉",
+          "area": "福岡県・北九州市八幡東区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月中旬",
+          "wantToGo": 22,
+          "wentAndLiked": 22,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e478566/"
+        },
+        {
+          "id": "ar1040e479617",
+          "name": "河内貯水池の紅葉",
+          "area": "福岡県・北九州市八幡東区",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 5,
+          "wentAndLiked": 20,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e479617/"
+        },
+        {
+          "id": "ar1040e480895",
+          "name": "河内藤園の紅葉",
+          "area": "福岡県・北九州市八幡東区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬",
+          "wantToGo": 11,
+          "wentAndLiked": 14,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e480895/"
+        },
+        {
+          "id": "ar1040e479975",
+          "name": "瀬板の森公園 もみじ谷の紅葉",
+          "area": "福岡県・北九州市八幡西区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬〜12月上旬",
+          "wantToGo": 8,
+          "wentAndLiked": 11,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e479975/"
+        },
+        {
+          "id": "ar1040e479976",
+          "name": "吉祥寺公園の紅葉",
+          "area": "福岡県・北九州市八幡西区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬〜12月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e479976/"
+        },
+        {
+          "id": "ar1040e393068",
+          "name": "香椎宮の紅葉",
+          "area": "福岡県・福岡市東区",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1040e393068/"
+        }
+      ]
     },
     {
       "name": "佐賀県",
-      "typicalPeak": "11月上旬–12月上旬",
-      "spots": []
+      "typicalPeak": "11月上旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar1041e154784",
+          "name": "シチメンソウ群生地の紅葉",
+          "area": "佐賀県・佐賀市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 26,
+          "wentAndLiked": 31,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e154784/"
+        },
+        {
+          "id": "ar1041e154786",
+          "name": "川上峡の紅葉",
+          "area": "佐賀県・佐賀市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 3,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e154786/"
+        },
+        {
+          "id": "ar1041e13241",
+          "name": "西渓公園の紅葉",
+          "area": "佐賀県・多久市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 10,
+          "wentAndLiked": 24,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e13241/"
+        },
+        {
+          "id": "ar1041e13276",
+          "name": "御船山楽園の紅葉",
+          "area": "佐賀県・武雄市",
+          "koyoStart": "11月上旬頃",
+          "koyoPeak": "11月上旬～12月上旬",
+          "wantToGo": 38,
+          "wentAndLiked": 44,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e13276/"
+        },
+        {
+          "id": "ar1041e154785",
+          "name": "乳待坊公園の紅葉",
+          "area": "佐賀県・武雄市",
+          "koyoStart": "11月上旬～中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 7,
+          "wentAndLiked": 10,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e154785/"
+        },
+        {
+          "id": "ar1041e12803",
+          "name": "九年庵の紅葉",
+          "area": "佐賀県・神埼市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "2025年11月15日(土)～30日(日)",
+          "wantToGo": 35,
+          "wentAndLiked": 57,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e12803/"
+        },
+        {
+          "id": "ar1041e12804",
+          "name": "仁比山神社の紅葉",
+          "area": "佐賀県・神埼市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 5,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e12804/"
+        },
+        {
+          "id": "ar1041e12806",
+          "name": "大興善寺の紅葉",
+          "area": "佐賀県・三養基郡基山町",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 31,
+          "wentAndLiked": 52,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e12806/"
+        },
+        {
+          "id": "ar1041e154783",
+          "name": "陶山神社の紅葉",
+          "area": "佐賀県・西松浦郡有田町",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1041e154783/"
+        }
+      ]
     },
     {
       "name": "長崎県",
-      "typicalPeak": "11月中旬–12月上旬",
-      "spots": []
+      "typicalPeak": "11月中旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar1042e481605",
+          "name": "滝の観音の紅葉",
+          "area": "長崎県・長崎市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1042e481605/"
+        },
+        {
+          "id": "ar1042e483948",
+          "name": "金刀比羅神社の紅葉",
+          "area": "長崎県・長崎市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 1,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1042e483948/"
+        },
+        {
+          "id": "ar1042e483959",
+          "name": "寿福寺の紅葉",
+          "area": "長崎県・佐世保市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "2025年11月15日(土)～24日(月)",
+          "wantToGo": 16,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1042e483959/"
+        },
+        {
+          "id": "ar1042e154787",
+          "name": "轟峡の紅葉",
+          "area": "長崎県・諫早市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 3,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1042e154787/"
+        },
+        {
+          "id": "ar1042e480382",
+          "name": "舟志のもみじ街道の紅葉",
+          "area": "長崎県・対馬市",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 1,
+          "wentAndLiked": 2,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1042e480382/"
+        },
+        {
+          "id": "ar1042e13121",
+          "name": "雲仙の紅葉",
+          "area": "長崎県・雲仙市",
+          "koyoStart": "10月中旬～10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 37,
+          "wentAndLiked": 25,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1042e13121/"
+        },
+        {
+          "id": "ar1042e482762",
+          "name": "三十路苑の紅葉",
+          "area": "長崎県・雲仙市",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 27,
+          "wentAndLiked": 21,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1042e482762/"
+        }
+      ]
     },
     {
       "name": "熊本県",
-      "typicalPeak": "10月下旬–12月上旬",
-      "spots": []
+      "typicalPeak": "10月下旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar1043e12897",
+          "name": "五家荘(樅木の吊橋)の紅葉",
+          "area": "熊本県・八代市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 12,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e12897/"
+        },
+        {
+          "id": "ar1043e12959",
+          "name": "五家荘(梅の木轟公園吊橋)の紅葉",
+          "area": "熊本県・八代市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 40,
+          "wentAndLiked": 33,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e12959/"
+        },
+        {
+          "id": "ar1043e13061",
+          "name": "菊池渓谷の紅葉",
+          "area": "熊本県・菊池市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 8,
+          "wentAndLiked": 11,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e13061/"
+        },
+        {
+          "id": "ar1043e448793",
+          "name": "遊水峡の紅葉",
+          "area": "熊本県・阿蘇郡小国町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 51,
+          "wentAndLiked": 47,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e448793/"
+        },
+        {
+          "id": "ar1043e448924",
+          "name": "下城の大イチョウの紅葉",
+          "area": "熊本県・阿蘇郡小国町",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 5,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e448924/"
+        },
+        {
+          "id": "ar1043e12813",
+          "name": "蘇陽峡の紅葉",
+          "area": "熊本県・上益城郡山都町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 11,
+          "wentAndLiked": 28,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e12813/"
+        },
+        {
+          "id": "ar1043e154790",
+          "name": "緑仙峡の紅葉",
+          "area": "熊本県・上益城郡山都町",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 6,
+          "wentAndLiked": 10,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e154790/"
+        },
+        {
+          "id": "ar1043e154791",
+          "name": "立神峡の紅葉",
+          "area": "熊本県・八代郡氷川町",
+          "koyoStart": "10月下旬～11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 7,
+          "wentAndLiked": 7,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e154791/"
+        },
+        {
+          "id": "ar1043e154789",
+          "name": "舞鶴城公園の紅葉",
+          "area": "熊本県・葦北郡津奈木町",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 4,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e154789/"
+        },
+        {
+          "id": "ar1043e154792",
+          "name": "球磨川の紅葉",
+          "area": "熊本県・球磨郡球磨村",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月中旬",
+          "wantToGo": 4,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1043e154792/"
+        }
+      ]
     },
     {
       "name": "大分県",
-      "typicalPeak": "10月下旬–12月上旬",
-      "spots": []
+      "typicalPeak": "10月下旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar1044e154800",
+          "name": "高崎山自然動物園の紅葉",
+          "area": "大分県・大分市",
+          "koyoStart": "11月下旬",
+          "koyoPeak": "12月上旬～12月中旬",
+          "wantToGo": 4,
+          "wentAndLiked": 2,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e154800/"
+        },
+        {
+          "id": "ar1044e12819",
+          "name": "裏耶馬渓の紅葉",
+          "area": "大分県・中津市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月中旬",
+          "wantToGo": 12,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e12819/"
+        },
+        {
+          "id": "ar1044e13082",
+          "name": "深耶馬渓の紅葉",
+          "area": "大分県・中津市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 19,
+          "wentAndLiked": 21,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e13082/"
+        },
+        {
+          "id": "ar1044e154797",
+          "name": "耶馬渓の紅葉",
+          "area": "大分県・中津市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 35,
+          "wentAndLiked": 39,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e154797/"
+        },
+        {
+          "id": "ar1044e12814",
+          "name": "ことといの里の紅葉",
+          "area": "大分県・日田市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 8,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e12814/"
+        },
+        {
+          "id": "ar1044e154802",
+          "name": "響渓谷の紅葉",
+          "area": "大分県・日田市",
+          "koyoStart": "11月上旬～11月中旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e154802/"
+        },
+        {
+          "id": "ar1044e154796",
+          "name": "藤河内渓谷の紅葉",
+          "area": "大分県・佐伯市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 2,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e154796/"
+        },
+        {
+          "id": "ar1044e12817",
+          "name": "くじゅう連山の紅葉",
+          "area": "大分県・竹田市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 41,
+          "wentAndLiked": 58,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e12817/"
+        },
+        {
+          "id": "ar1044e13184",
+          "name": "竹田(岡城跡)の紅葉",
+          "area": "大分県・竹田市",
+          "koyoStart": "11月初旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 21,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e13184/"
+        },
+        {
+          "id": "ar1044e154798",
+          "name": "陽目渓谷の紅葉",
+          "area": "大分県・竹田市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 2,
+          "wentAndLiked": 2,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1044e154798/"
+        }
+      ]
     },
     {
       "name": "宮崎県",
-      "typicalPeak": "11月上旬–11月下旬",
-      "spots": []
+      "typicalPeak": "11月上旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar1045e484113",
+          "name": "北郷の紅葉",
+          "area": "宮崎県・日南市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 7,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1045e484113/"
+        },
+        {
+          "id": "ar1045e482967",
+          "name": "えびの高原の紅葉",
+          "area": "宮崎県・えびの市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 11,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1045e482967/"
+        },
+        {
+          "id": "ar1045e13191",
+          "name": "高千穂峡の紅葉",
+          "area": "宮崎県・西臼杵郡高千穂町",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 29,
+          "wentAndLiked": 24,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1045e13191/"
+        },
+        {
+          "id": "ar1045e480517",
+          "name": "祖母山の紅葉",
+          "area": "宮崎県・西臼杵郡高千穂町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 1,
+          "wentAndLiked": 0,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1045e480517/"
+        },
+        {
+          "id": "ar1045e482760",
+          "name": "見立渓谷の紅葉",
+          "area": "宮崎県・西臼杵郡日之影町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 10,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1045e482760/"
+        },
+        {
+          "id": "ar1045e154803",
+          "name": "五ヶ瀬渓谷の紅葉",
+          "area": "宮崎県・西臼杵郡五ヶ瀬町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 3,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1045e154803/"
+        }
+      ]
     },
     {
       "name": "鹿児島県",
-      "typicalPeak": "11月上旬–12月上旬",
-      "spots": []
+      "typicalPeak": "11月上旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar1046e570898",
+          "name": "垂水千本イチョウの紅葉",
+          "area": "鹿児島県・垂水市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬〜12月上旬",
+          "wantToGo": 3,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1046e570898/"
+        },
+        {
+          "id": "ar1046e13273",
+          "name": "藺牟田池県立自然公園の紅葉",
+          "area": "鹿児島県・薩摩川内市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 12,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1046e13273/"
+        },
+        {
+          "id": "ar1046e13131",
+          "name": "霧島(霧島神宮)の紅葉",
+          "area": "鹿児島県・霧島市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 12,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1046e13131/"
+        },
+        {
+          "id": "ar1046e13178",
+          "name": "霧島(霧島温泉郷)の紅葉",
+          "area": "鹿児島県・霧島市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 13,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1046e13178/"
+        },
+        {
+          "id": "ar1046e154806",
+          "name": "県道1号線(丸尾-大浪池登山口)の紅葉",
+          "area": "鹿児島県・霧島市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 3,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1046e154806/"
+        },
+        {
+          "id": "ar1046e154804",
+          "name": "冠岳の紅葉",
+          "area": "鹿児島県・いちき串木野市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 11,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1046e154804/"
+        },
+        {
+          "id": "ar1046e13002",
+          "name": "曽木の滝の紅葉",
+          "area": "鹿児島県・伊佐市",
+          "koyoStart": "11月上旬～中旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 8,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar1046e13002/"
+        }
+      ]
     }
   ]
 }
