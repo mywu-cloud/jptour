@@ -2,27 +2,301 @@
   "region": "shikoku",
   "regionLabel": "四国",
   "date": "2026-07-19",
-  "source": "koyo.walkerplus.com 都道府県別頁面彙整（例年見頃資料；本區域逐點名所清單製作中，僅提供縣別例年見頃平均）",
+  "source": "koyo.walkerplus.com 各都道府県紅葉名所頁面(事實性資料:名稱/地點/例年色づき始め/例年見頃/人氣度數值,不轉載文章或照片)",
   "prefectures": [
     {
       "name": "徳島県",
-      "typicalPeak": "10月下旬–11月下旬",
-      "spots": []
+      "typicalPeak": "10月下旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0936e13104",
+          "name": "剣山の紅葉",
+          "area": "徳島県・三好市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 11,
+          "wentAndLiked": 20,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0936e13104/"
+        },
+        {
+          "id": "ar0936e13105",
+          "name": "祖谷渓の紅葉",
+          "area": "徳島県・三好市",
+          "koyoStart": "10月下旬 ※祖谷のかずら橋は11月上旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 6,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0936e13105/"
+        },
+        {
+          "id": "ar0936e13183",
+          "name": "大歩危・小歩危の紅葉",
+          "area": "徳島県・三好市",
+          "koyoStart": "11月初旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 6,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0936e13183/"
+        },
+        {
+          "id": "ar0936e154759",
+          "name": "祖谷のかずら橋の紅葉",
+          "area": "徳島県・三好市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 11,
+          "wentAndLiked": 14,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0936e154759/"
+        },
+        {
+          "id": "ar0936e154760",
+          "name": "箸蔵寺の紅葉",
+          "area": "徳島県・三好市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 5,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0936e154760/"
+        },
+        {
+          "id": "ar0936e154761",
+          "name": "竜ヶ岳の紅葉",
+          "area": "徳島県・三好市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 4,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0936e154761/"
+        },
+        {
+          "id": "ar0936e154762",
+          "name": "雲辺寺の紅葉",
+          "area": "徳島県・三好市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬",
+          "wantToGo": 16,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0936e154762/"
+        }
+      ]
     },
     {
       "name": "香川県",
-      "typicalPeak": "11月上旬–12月上旬",
-      "spots": []
+      "typicalPeak": "11月上旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar0937e154763",
+          "name": "特別名勝 栗林公園の紅葉",
+          "area": "香川県・高松市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 18,
+          "wentAndLiked": 20,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0937e154763/"
+        },
+        {
+          "id": "ar0937e12786",
+          "name": "大窪寺の紅葉",
+          "area": "香川県・さぬき市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～12月上旬",
+          "wantToGo": 10,
+          "wentAndLiked": 19,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0937e12786/"
+        },
+        {
+          "id": "ar0937e13182",
+          "name": "寒霞渓の紅葉",
+          "area": "香川県・小豆郡小豆島町",
+          "koyoStart": "11月初旬",
+          "koyoPeak": "11月上旬〜11月下旬",
+          "wantToGo": 56,
+          "wentAndLiked": 60,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0937e13182/"
+        },
+        {
+          "id": "ar0937e12787",
+          "name": "柏原渓谷の紅葉",
+          "area": "香川県・綾歌郡綾川町",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 8,
+          "wentAndLiked": 7,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0937e12787/"
+        },
+        {
+          "id": "ar0937e13003",
+          "name": "金刀比羅宮の紅葉",
+          "area": "香川県・仲多度郡琴平町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 14,
+          "wentAndLiked": 15,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0937e13003/"
+        }
+      ]
     },
     {
       "name": "愛媛県",
-      "typicalPeak": "11月中旬–12月上旬",
-      "spots": []
+      "typicalPeak": "11月中旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar0938e154770",
+          "name": "松山城の紅葉",
+          "area": "愛媛県・松山市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月下旬～12月上旬",
+          "wantToGo": 3,
+          "wentAndLiked": 2,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e154770/"
+        },
+        {
+          "id": "ar0938e154772",
+          "name": "松山城二之丸史跡庭園の紅葉",
+          "area": "愛媛県・松山市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e154772/"
+        },
+        {
+          "id": "ar0938e154765",
+          "name": "鈍川渓谷の紅葉",
+          "area": "愛媛県・今治市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 7,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e154765/"
+        },
+        {
+          "id": "ar0938e12791",
+          "name": "滑床渓谷・雪輪の滝の紅葉",
+          "area": "愛媛県・宇和島市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 7,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e12791/"
+        },
+        {
+          "id": "ar0938e12788",
+          "name": "別子ラインの紅葉",
+          "area": "愛媛県・新居浜市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e12788/"
+        },
+        {
+          "id": "ar0938e154764",
+          "name": "西山興隆寺の紅葉",
+          "area": "愛媛県・西条市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～12月中旬",
+          "wantToGo": 29,
+          "wentAndLiked": 46,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e154764/"
+        },
+        {
+          "id": "ar0938e154767",
+          "name": "瓶ヶ森の紅葉",
+          "area": "愛媛県・西条市",
+          "koyoStart": "9月下旬～10月上旬",
+          "koyoPeak": "10月上旬～10月中旬",
+          "wantToGo": 2,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e154767/"
+        },
+        {
+          "id": "ar0938e13126",
+          "name": "大洲・稲荷山公園の紅葉",
+          "area": "愛媛県・大洲市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 5,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e13126/"
+        },
+        {
+          "id": "ar0938e154771",
+          "name": "白滝公園の紅葉",
+          "area": "愛媛県・大洲市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬～12月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e154771/"
+        },
+        {
+          "id": "ar0938e154766",
+          "name": "富郷渓谷の紅葉",
+          "area": "愛媛県・四国中央市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 5,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0938e154766/"
+        }
+      ]
     },
     {
       "name": "高知県",
-      "typicalPeak": "10月下旬–11月下旬",
-      "spots": []
+      "typicalPeak": "10月下旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0939e12795",
+          "name": "べふ峡の紅葉",
+          "area": "高知県・香美市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 14,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0939e12795/"
+        },
+        {
+          "id": "ar0939e12792",
+          "name": "魚梁瀬西川渓谷の紅葉",
+          "area": "高知県・安芸郡馬路村",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 2,
+          "wentAndLiked": 7,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0939e12792/"
+        },
+        {
+          "id": "ar0939e154773",
+          "name": "瀬戸川渓谷の紅葉",
+          "area": "高知県・土佐郡土佐町",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 8,
+          "wentAndLiked": 11,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0939e154773/"
+        },
+        {
+          "id": "ar0939e13234",
+          "name": "中津渓谷県立自然公園の紅葉",
+          "area": "高知県・吾川郡仁淀川町",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 7,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0939e13234/"
+        },
+        {
+          "id": "ar0939e154774",
+          "name": "天狗高原の紅葉",
+          "area": "高知県・高岡郡津野町",
+          "koyoStart": "10月中旬～10月下旬",
+          "koyoPeak": "10月下旬",
+          "wantToGo": 9,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0939e154774/"
+        }
+      ]
     }
   ]
 }
