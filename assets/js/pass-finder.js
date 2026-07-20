@@ -25,7 +25,8 @@ return cities.every(function(c){ return pass.coverage.indexOf(c) !== -1; });
 async function runCalculator(){
 var checkboxes = document.querySelectorAll('.city-check:checked');
 var checked = Array.prototype.map.call(checkboxes, function(el){ return el.value; });
-var days = parseInt(document.getElementById('trip-days').value, 10) || 1;
+var daysInput = document.getElementById('trip-days');
+var days = daysInput ? (parseInt(daysInput.value, 10) || 1) : 1;
 var resultEl = document.getElementById('pf-result');
 if(checked.length < 2){
 resultEl.innerHTML = '<p>請至少勾選兩個城市以比較交通方式。</p>';
