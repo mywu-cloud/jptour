@@ -2,22 +2,325 @@
   "region": "koshinetsu",
   "regionLabel": "甲信越",
   "date": "2026-07-19",
-  "source": "koyo.walkerplus.com 都道府県別頁面彙整（例年見頃資料；本區域逐點名所清單製作中，僅提供縣別例年見頃平均）",
+  "source": "koyo.walkerplus.com 各都道府県紅葉名所頁面(事實性資料:名稱/地點/例年色づき始め/例年見頃/人氣度數值,不轉載文章或照片)",
   "prefectures": [
     {
       "name": "新潟県",
-      "typicalPeak": "10月中旬–11月中旬",
-      "spots": []
+      "typicalPeak": "10月中旬～11月中旬",
+      "spots": [
+        {
+          "id": "ar0415e12679",
+          "name": "八方台の紅葉",
+          "area": "新潟県・長岡市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e12679/"
+        },
+        {
+          "id": "ar0415e154550",
+          "name": "もみじ園の紅葉",
+          "area": "新潟県・長岡市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 23,
+          "wentAndLiked": 23,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e154550/"
+        },
+        {
+          "id": "ar0415e12613",
+          "name": "八木ヶ鼻の紅葉",
+          "area": "新潟県・三条市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 4,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e12613/"
+        },
+        {
+          "id": "ar0415e154547",
+          "name": "大谷ダムの紅葉",
+          "area": "新潟県・三条市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 7,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e154547/"
+        },
+        {
+          "id": "ar0415e154546",
+          "name": "松雲山荘の紅葉",
+          "area": "新潟県・柏崎市",
+          "koyoStart": "10月下旬～11月上旬",
+          "koyoPeak": "11月中旬",
+          "wantToGo": 19,
+          "wentAndLiked": 19,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e154546/"
+        },
+        {
+          "id": "ar0415e154551",
+          "name": "加茂山公園の紅葉",
+          "area": "新潟県・加茂市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 11,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e154551/"
+        },
+        {
+          "id": "ar0415e12851",
+          "name": "清津峡の紅葉",
+          "area": "新潟県・十日町市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 22,
+          "wentAndLiked": 31,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e12851/"
+        },
+        {
+          "id": "ar0415e154552",
+          "name": "美人林の紅葉",
+          "area": "新潟県・十日町市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 10,
+          "wentAndLiked": 13,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e154552/"
+        },
+        {
+          "id": "ar0415e154542",
+          "name": "国上山の紅葉",
+          "area": "新潟県・燕市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 9,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e154542/"
+        },
+        {
+          "id": "ar0415e12942",
+          "name": "笹ヶ峰高原の紅葉",
+          "area": "新潟県・妙高市",
+          "koyoStart": "9月下旬",
+          "koyoPeak": "10月上旬～10月中旬",
+          "wantToGo": 8,
+          "wentAndLiked": 16,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0415e12942/"
+        }
+      ]
     },
     {
       "name": "山梨県",
-      "typicalPeak": "10月中旬–11月下旬",
-      "spots": []
+      "typicalPeak": "10月中旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0419e13057",
+          "name": "御嶽昇仙峡の紅葉",
+          "area": "山梨県・甲府市",
+          "koyoStart": "10月中旬以降",
+          "koyoPeak": "10月中旬～11月下旬",
+          "wantToGo": 66,
+          "wentAndLiked": 72,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e13057/"
+        },
+        {
+          "id": "ar0419e13058",
+          "name": "芦川渓谷の紅葉",
+          "area": "山梨県・甲府市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月上旬～11月下旬",
+          "wantToGo": 12,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e13058/"
+        },
+        {
+          "id": "ar0419e373270",
+          "name": "山梨県芸術の森公園の紅葉",
+          "area": "山梨県・甲府市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 5,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e373270/"
+        },
+        {
+          "id": "ar0419e12832",
+          "name": "富士山5合目(山梨側)の紅葉",
+          "area": "山梨県・富士吉田市",
+          "koyoStart": "9月下旬",
+          "koyoPeak": "10月上旬～10月下旬",
+          "wantToGo": 7,
+          "wentAndLiked": 15,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e12832/"
+        },
+        {
+          "id": "ar0419e393905",
+          "name": "鐘山の滝の紅葉",
+          "area": "山梨県・富士吉田市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 10,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e393905/"
+        },
+        {
+          "id": "ar0419e12601",
+          "name": "西沢渓谷の紅葉",
+          "area": "山梨県・山梨市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 56,
+          "wentAndLiked": 75,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e12601/"
+        },
+        {
+          "id": "ar0419e416618",
+          "name": "広瀬湖(広瀬ダム)の紅葉",
+          "area": "山梨県・山梨市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 3,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e416618/"
+        },
+        {
+          "id": "ar0419e13262",
+          "name": "名勝 猿橋の紅葉",
+          "area": "山梨県・大月市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬",
+          "wantToGo": 24,
+          "wentAndLiked": 33,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e13262/"
+        },
+        {
+          "id": "ar0419e154572",
+          "name": "南伊奈ヶ湖周辺の紅葉",
+          "area": "山梨県・南アルプス市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 14,
+          "wentAndLiked": 31,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e154572/"
+        },
+        {
+          "id": "ar0419e154574",
+          "name": "南アルプス白鳳渓谷の紅葉",
+          "area": "山梨県・南アルプス市",
+          "koyoStart": "9月下旬",
+          "koyoPeak": "10月上旬～11月上旬",
+          "wantToGo": 10,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0419e154574/"
+        }
+      ]
     },
     {
       "name": "長野県",
-      "typicalPeak": "9月下旬–11月下旬",
-      "spots": []
+      "typicalPeak": "9月下旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0420e12597",
+          "name": "久米路峡の紅葉",
+          "area": "長野県・長野市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 21,
+          "wentAndLiked": 22,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e12597/"
+        },
+        {
+          "id": "ar0420e12598",
+          "name": "戸隠高原鏡池の紅葉",
+          "area": "長野県・長野市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 30,
+          "wentAndLiked": 29,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e12598/"
+        },
+        {
+          "id": "ar0420e154583",
+          "name": "飯綱高原の紅葉",
+          "area": "長野県・長野市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 8,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e154583/"
+        },
+        {
+          "id": "ar0420e154586",
+          "name": "奥裾花自然園の紅葉",
+          "area": "長野県・長野市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e154586/"
+        },
+        {
+          "id": "ar0420e154589",
+          "name": "奥裾花渓谷の紅葉",
+          "area": "長野県・長野市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 16,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e154589/"
+        },
+        {
+          "id": "ar0420e12889",
+          "name": "美鈴湖の紅葉",
+          "area": "長野県・松本市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 4,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e12889/"
+        },
+        {
+          "id": "ar0420e12921",
+          "name": "乗鞍高原の紅葉",
+          "area": "長野県・松本市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬",
+          "wantToGo": 13,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e12921/"
+        },
+        {
+          "id": "ar0420e12926",
+          "name": "白骨温泉の紅葉",
+          "area": "長野県・松本市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬",
+          "wantToGo": 8,
+          "wentAndLiked": 11,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e12926/"
+        },
+        {
+          "id": "ar0420e12930",
+          "name": "美ケ原高原の紅葉",
+          "area": "長野県・松本市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 53,
+          "wentAndLiked": 60,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e12930/"
+        },
+        {
+          "id": "ar0420e13025",
+          "name": "上高地(大正池、河童橋周辺)の紅葉",
+          "area": "長野県・松本市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 19,
+          "wentAndLiked": 20,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0420e13025/"
+        }
+      ]
     }
   ]
 }
