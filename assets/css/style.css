@@ -53,3 +53,11 @@ button.primary:hover{opacity:.9;}
 .pref-summary-list{list-style:none;padding:0;margin:0;}
 .pref-summary-list li{padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.08);font-size:.9rem;}
 .status-tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.72rem;color:#333;background:rgba(0,0,0,0.08);margin-left:6px;}
+
+.pass-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:16px 0 6px;}
+.pass-card{background:rgba(255,255,255,0.7);border-radius:14px;padding:18px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
+.pass-card h3{margin:0 0 8px;font-size:1rem;}
+.pass-price{display:inline-block;font-size:.76rem;font-weight:600;color:#fff;background:var(--accent);padding:3px 10px;border-radius:12px;margin-bottom:8px;}
+.pass-card p{margin:8px 0;font-size:.86rem;color:#444;line-height:1.5;}
+.pass-card a{font-size:.85rem;color:var(--accent);text-decoration:none;font-weight:600;}
+.pass-card a:hover{text-decoration:underline;}
