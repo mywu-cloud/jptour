@@ -4,7 +4,7 @@ html{scroll-behavior:smooth;}
 body{margin:0;min-height:100vh;font-family:"Noto Sans TC","Hiragino Sans","PingFang TC",sans-serif;color:#222;background-size:cover;background-position:center;background-attachment:fixed;transition:background 0.8s ease;}
 body.season-spring{background-image:linear-gradient(180deg,#fff0f5 0%,#ffd9e6 45%,#ffc2d6 100%);--accent:#e75480;}
 body.season-summer{background-image:linear-gradient(180deg,#eafaf0 0%,#c3ecd0 45%,#8fd6a0 100%);--accent:#2f9e44;}
-body.season-autumn{background-image:linear-gradient(180deg,#fff3e0 0%,#ffd39c 45%,#e8752c 100%);--accent:#c1440e;}
+body.season-autumn{background-image:linear-gradient(180deg,#fffaf3 0%,#ffe8c4 45%,#ffc99a 100%);--accent:#c1440e;}
 body.season-winter{background-image:linear-gradient(180deg,#eef7ff 0%,#d3ecff 45%,#a3cfe8 100%);--accent:#2166ac;}
 header{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:var(--header-bg);display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid rgba(0,0,0,0.08);flex-wrap:wrap;}
 header .logo{font-weight:700;font-size:1.15rem;color:var(--accent);text-decoration:none;}
