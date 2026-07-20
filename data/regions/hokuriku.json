@@ -2,22 +2,315 @@
   "region": "hokuriku",
   "regionLabel": "北陸",
   "date": "2026-07-19",
-  "source": "koyo.walkerplus.com 都道府県別頁面彙整（例年見頃資料；本區域逐點名所清單製作中，僅提供縣別例年見頃平均）",
+  "source": "koyo.walkerplus.com 各都道府県紅葉名所頁面(事實性資料:名稱/地點/例年色づき始め/例年見頃/人氣度數值,不轉載文章或照片)",
   "prefectures": [
     {
       "name": "富山県",
-      "typicalPeak": "10月中旬–11月下旬",
-      "spots": []
+      "typicalPeak": "10月中旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0516e13033",
+          "name": "有峰森林文化村(有峰森林文化公園)の紅葉",
+          "area": "富山県・富山市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 21,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e13033/"
+        },
+        {
+          "id": "ar0516e13179",
+          "name": "神通峡の紅葉",
+          "area": "富山県・富山市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 15,
+          "wentAndLiked": 22,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e13179/"
+        },
+        {
+          "id": "ar0516e154556",
+          "name": "富山市民俗民芸村の紅葉",
+          "area": "富山県・富山市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 6,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e154556/"
+        },
+        {
+          "id": "ar0516e12617",
+          "name": "二上山の紅葉",
+          "area": "富山県・高岡市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 8,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e12617/"
+        },
+        {
+          "id": "ar0516e12838",
+          "name": "黒部峡谷の紅葉",
+          "area": "富山県・黒部市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 16,
+          "wentAndLiked": 18,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e12838/"
+        },
+        {
+          "id": "ar0516e13075",
+          "name": "宇奈月温泉街の紅葉",
+          "area": "富山県・黒部市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月中旬",
+          "wantToGo": 14,
+          "wentAndLiked": 16,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e13075/"
+        },
+        {
+          "id": "ar0516e154557",
+          "name": "稲葉山・宮島峡県定公園の紅葉",
+          "area": "富山県・小矢部市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 3,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e154557/"
+        },
+        {
+          "id": "ar0516e12865",
+          "name": "美女平(標高977メートル)の紅葉",
+          "area": "富山県・中新川郡立山町",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 5,
+          "wentAndLiked": 2,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e12865/"
+        },
+        {
+          "id": "ar0516e12978",
+          "name": "立山(黒部ダム：標高1470メートル付近)の紅葉",
+          "area": "富山県・中新川郡立山町",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～10月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e12978/"
+        },
+        {
+          "id": "ar0516e13249",
+          "name": "立山(室堂平：標高2450メートル付近)の紅葉",
+          "area": "富山県・中新川郡立山町",
+          "koyoStart": "9月上旬",
+          "koyoPeak": "9月中旬～10月上旬",
+          "wantToGo": 14,
+          "wentAndLiked": 14,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0516e13249/"
+        }
+      ]
     },
     {
       "name": "石川県",
-      "typicalPeak": "10月下旬–12月上旬",
-      "spots": []
+      "typicalPeak": "10月下旬～12月上旬",
+      "spots": [
+        {
+          "id": "ar0517e13010",
+          "name": "特別名勝兼六園の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 18,
+          "wentAndLiked": 16,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e13010/"
+        },
+        {
+          "id": "ar0517e478831",
+          "name": "玉泉院丸庭園の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬〜11月下旬",
+          "wantToGo": 3,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e478831/"
+        },
+        {
+          "id": "ar0517e478835",
+          "name": "寺島蔵人邸の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 6,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e478835/"
+        },
+        {
+          "id": "ar0517e480890",
+          "name": "アメリカ楓通りの紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月中旬",
+          "wantToGo": 5,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e480890/"
+        },
+        {
+          "id": "ar0517e481020",
+          "name": "辻家庭園の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 1,
+          "wentAndLiked": 1,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e481020/"
+        },
+        {
+          "id": "ar0517e482984",
+          "name": "東香山 大乘寺の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 9,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e482984/"
+        },
+        {
+          "id": "ar0517e483123",
+          "name": "太陽丘ニュータウン の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 7,
+          "wentAndLiked": 8,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e483123/"
+        },
+        {
+          "id": "ar0517e483334",
+          "name": "美術の小径・緑の小径の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "11月中旬",
+          "koyoPeak": "11月中旬〜11月下旬",
+          "wantToGo": 1,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e483334/"
+        },
+        {
+          "id": "ar0517e483548",
+          "name": "西田家庭園 玉泉園の紅葉",
+          "area": "石川県・金沢市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月下旬",
+          "wantToGo": 3,
+          "wentAndLiked": 3,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e483548/"
+        },
+        {
+          "id": "ar0517e12620",
+          "name": "那谷寺の紅葉",
+          "area": "石川県・小松市",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 29,
+          "wentAndLiked": 31,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0517e12620/"
+        }
+      ]
     },
     {
       "name": "福井県",
-      "typicalPeak": "10月下旬–11月下旬",
-      "spots": []
+      "typicalPeak": "10月下旬～11月下旬",
+      "spots": [
+        {
+          "id": "ar0518e154565",
+          "name": "一乗谷朝倉氏遺跡の紅葉",
+          "area": "福井県・福井市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月上旬～11月下旬",
+          "wantToGo": 5,
+          "wentAndLiked": 9,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e154565/"
+        },
+        {
+          "id": "ar0518e154566",
+          "name": "国名勝 養浩館庭園の紅葉",
+          "area": "福井県・福井市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 15,
+          "wentAndLiked": 6,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e154566/"
+        },
+        {
+          "id": "ar0518e154562",
+          "name": "大原山・西福寺の紅葉",
+          "area": "福井県・敦賀市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 4,
+          "wentAndLiked": 17,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e154562/"
+        },
+        {
+          "id": "ar0518e12625",
+          "name": "萬徳寺の紅葉",
+          "area": "福井県・小浜市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 3,
+          "wentAndLiked": 4,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e12625/"
+        },
+        {
+          "id": "ar0518e12956",
+          "name": "九頭竜湖の紅葉",
+          "area": "福井県・大野市",
+          "koyoStart": "10月中旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 29,
+          "wentAndLiked": 34,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e12956/"
+        },
+        {
+          "id": "ar0518e154563",
+          "name": "九頭竜峡の紅葉",
+          "area": "福井県・大野市",
+          "koyoStart": "10月上旬",
+          "koyoPeak": "10月中旬～11月上旬",
+          "wantToGo": 6,
+          "wentAndLiked": 5,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e154563/"
+        },
+        {
+          "id": "ar0518e154564",
+          "name": "西山公園の紅葉",
+          "area": "福井県・鯖江市",
+          "koyoStart": "11月上旬",
+          "koyoPeak": "11月中旬～11月下旬",
+          "wantToGo": 16,
+          "wentAndLiked": 14,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e154564/"
+        },
+        {
+          "id": "ar0518e13100",
+          "name": "永平寺の紅葉",
+          "area": "福井県・吉田郡永平寺町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "11月上旬～11月中旬",
+          "wantToGo": 12,
+          "wentAndLiked": 10,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e13100/"
+        },
+        {
+          "id": "ar0518e12627",
+          "name": "越前陶芸公園の紅葉",
+          "area": "福井県・丹生郡越前町",
+          "koyoStart": "10月下旬",
+          "koyoPeak": "10月下旬～11月上旬",
+          "wantToGo": 11,
+          "wentAndLiked": 12,
+          "sourceUrl": "https://koyo.walkerplus.com/detail/ar0518e12627/"
+        }
+      ]
     }
   ]
 }
