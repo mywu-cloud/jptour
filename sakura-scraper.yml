@@ -1,0 +1,78 @@
+name: Sakura Front Scraper
+
+# ─────────────────────────────────────────────────────────────────────────
+# Phase 1 骨架 — 抓取 jptour.pages.dev 當季開花預測／實測資料，
+# 存成帶日期戳的 JSON 快照 + 一份 latest.json，用 keep_files: true
+# 合併進 gh-pages（不覆蓋歷史快照 — 對應先前 flight tracker 踩過的坑 #1）。
+#
+# 測試階段（在 feature branch 上）：
+#   - 用 workflow_dispatch 手動觸發，並把 test_mode 設為 true，
+#     這樣資料會寫到 data/sakura-test/ 而不是 data/sakura/，
+#     不會汙染正式資料，也方便清理。
+#   - 確認沒問題、資料格式對了，再把 schedule 排程打開、
+#     並把這支 workflow 合併進「櫻花前線」正式站使用的 branch。
+# ─────────────────────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "true = 寫入 data/sakura-test/（測試用，不影響正式資料）"
+        required: false
+        default: "true"
+        type: choice
+        options: ["true", "false"]
+  schedule:
+    # 花季期間（2月中〜5月中）每日一次，UTC 時間 21:00（台灣時間早上 5:00）
+    # 先保持註解，等 Phase 1 在分支上驗收通過、要正式上線時再打開
+    # - cron: "0 21 * 2,3,4,5 *"
+    []
+
+permissions:
+  contents: write   # 需要 push 到 gh-pages branch
+
+concurrency:
+  group: sakura-scraper
+  cancel-in-progress: false   # 避免同時兩次執行互相覆蓋 latest.json
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (程式碼所在 branch，不是 gh-pages)
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run scraper
+        id: scrape
+        env:
+          TEST_MODE: ${{ github.event.inputs.test_mode || 'true' }}
+        run: node scripts/scrape-sakura.mjs
+
+      # scripts/scrape-sakura.mjs 執行完後，輸出會放在 ./scrape-output/
+      # 目錄結構跟 gh-pages 上要放的路徑一致，例如：
+      #   scrape-output/data/sakura/2026/2026-03-20.json
+      #   scrape-output/data/sakura/2026/latest.json
+      # （TEST_MODE=true 時則是 data/sakura-test/...）
+
+      - name: Deploy to gh-pages（merge，不覆蓋既有檔案）
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./scrape-output
+          publish_branch: gh-pages
+          keep_files: true          # 關鍵：保留 gh-pages 上既有的其他檔案/歷史快照
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "chore(sakura): update snapshot ${{ steps.scrape.outputs.snapshot_date || github.run_id }}"

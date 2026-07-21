@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本櫻花前線 2010–2026｜開花地圖</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-page:#fdf1f4;
+    --bg-panel:#fffbfc;
+    --bg-panel-2:#fbe4ec;
+    --line:#f2cedb;
+    --text-main:#4a2c35;
+    --text-dim:#8a6270;
+    --sakura-bud:#7c8ea0;
+    --sakura-light:#ffd9e6;
+    --sakura-mid:#ff9fb8;
+    --sakura-full:#ff5d82;
+    --sakura-peak:#c9556f;
+    --gold:#c9557a;
+    --font-display:'Helvetica Neue', 'Noto Sans TC', sans-serif;
+    --font-body:'Helvetica Neue', 'Noto Sans TC', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;background:var(--bg-page);color:var(--text-main);font-family:var(--font-body);font-size:14px;}
+  #app{display:flex;flex-direction:column;height:100vh;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:relative;
+    padding:18px 28px 16px;
+    background:linear-gradient(135deg,#ffe4ec 0%,#ffeef2 55%,#ffe4ec 100%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  header .petals{position:absolute;inset:0;pointer-events:none;opacity:.5;}
+  .petal{position:absolute;top:-10px;font-size:14px;color:var(--sakura-peak);animation:fall linear infinite;opacity:.6;}
+  @keyframes fall{
+    0%{transform:translateY(-10px) translateX(0) rotate(0deg);opacity:0;}
+    10%{opacity:.8;}
+    100%{transform:translateY(120px) translateX(30px) rotate(300deg);opacity:0;}
+  }
+  header h1{
+    margin:0;font-family:var(--font-display);font-weight:900;font-size:26px;letter-spacing:.04em;
+    color:var(--text-main);position:relative;z-index:1;
+  }
+  header h1 span{color:var(--sakura-peak);}
+  header p.sub{margin:4px 0 0;font-size:14px;color:var(--text-dim);position:relative;z-index:1;letter-spacing:.02em;}
+
+  /* ---------- Controls ---------- */
+  .controls{
+    display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+    padding:12px 28px;background:var(--bg-panel);border-bottom:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .ctrl-group{display:flex;align-items:center;gap:8px;}
+  .ctrl-label{font-size:14px;color:var(--text-dim);white-space:nowrap;letter-spacing:.03em;}
+  select{
+    background:var(--bg-panel-2);color:var(--text-main);border:1px solid var(--line);
+    border-radius:6px;padding:6px 10px;font-family:var(--font-body);font-size:14px;
+  }
+  select:focus{outline:1px solid var(--sakura-full);}
+  #dateSlider{width:280px;accent-color:var(--sakura-full);}
+  .date-badge{
+    font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--gold);
+    min-width:64px;display:inline-block;
+  }
+  button.play-btn{
+    background:var(--sakura-full);border:none;color:#3a1520;font-weight:700;
+    padding:7px 16px;border-radius:20px;cursor:pointer;font-family:var(--font-body);font-size:14px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  button.play-btn:hover{background:var(--sakura-mid);transform:translateY(-1px);}
+  button.reset-btn{
+    background:transparent;border:1px solid var(--line);color:var(--text-dim);
+    padding:6px 14px;border-radius:20px;cursor:pointer;font-size:14px;font-family:var(--font-body);
+  }
+  button.reset-btn:hover{border-color:var(--sakura-mid);color:var(--sakura-mid);}
+  .stat-pill{
+    margin-left:auto;font-size:14px;color:var(--text-dim);background:var(--bg-panel-2);
+    padding:6px 14px;border-radius:20px;border:1px solid var(--line);
+  }
+  .stat-pill b{color:var(--sakura-full);font-family:var(--font-display);}
+
+  /* ---------- Main layout ---------- */
+  main{flex:1;display:flex;min-height:0;}
+  #map{flex:1;min-width:0;background:#eee;}
+  aside{
+    width:300px;flex-shrink:0;background:var(--bg-panel);border-left:1px solid var(--line);
+    overflow-y:auto;padding:16px 18px 24px;
+  }
+  aside h2{
+    font-family:var(--font-display);font-size:14px;margin:0 0 10px;color:var(--gold);
+    letter-spacing:.05em;border-bottom:1px solid var(--line);padding-bottom:6px;
+    text-transform:none;font-weight:700;
+  }
+  .legend-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-dim);margin-bottom:6px;}
+  .legend-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.15);}
+
+  #trendChartWrap{margin-top:18px;}
+  #cityList{margin-top:6px;font-size:14px;}
+  .city-row{
+    display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line);
+    color:var(--text-main);
+  }
+  .city-row .cname{color:var(--text-main);}
+  .city-row .cdate{color:var(--sakura-peak);font-family:var(--font-display);font-weight:700;}
+  .city-row.pending .cdate{color:var(--text-dim);}
+
+  .leaflet-popup-content-wrapper{
+    background:var(--bg-panel);color:var(--text-main);border-radius:10px;
+    border:1px solid var(--line);
+  }
+  .leaflet-popup-tip{background:var(--bg-panel);}
+  .popup-title{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--sakura-peak);margin-bottom:4px;}
+  .popup-pref{font-size:14px;color:var(--text-dim);margin-bottom:8px;}
+  .popup-row{font-size:14px;display:flex;justify-content:space-between;padding:2px 0;gap:10px;}
+  .popup-row .k{color:var(--text-dim);}
+  .popup-row .v{color:var(--text-main);font-weight:600;}
+  .popup-hist{margin-top:6px;padding-top:6px;border-top:1px solid var(--line);font-size:14px;color:var(--text-dim);}
+
+  footer{
+    flex-shrink:0;padding:8px 28px;background:var(--bg-panel);border-top:1px solid var(--line);
+    font-size:14px;color:var(--text-dim);display:flex;justify-content:space-between;
+  }
+  a.src-link{color:var(--sakura-peak);text-decoration:none;}
+  a.src-link:hover{text-decoration:underline;}
+
+  @media (max-width:820px){
+    aside{display:none;}
+    .controls{gap:10px;}
+    #dateSlider{width:160px;}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="petals" id="petals"></div>
+    <h1>日本<span>櫻花前線</span> 2010–2026</h1>
+    <p class="sub">全國 46 個氣象觀測地點・開花日／滿開日歷史紀錄・互動花況地圖</p>
+  </header>
+
+  <div class="controls">
+    <div class="ctrl-group">
+      <span class="ctrl-label">年份</span>
+      <select id="yearSelect"></select>
+    </div>
+    <div class="ctrl-group">
+      <span class="ctrl-label">日期</span>
+      <input type="range" id="dateSlider" min="55" max="150" value="100" step="1">
+      <span class="date-badge" id="dateBadge">--/--</span>
+    </div>
+    <button class="play-btn" id="playBtn">▶ 播放花期</button>
+    <button class="reset-btn" id="resetBtn">重設</button>
+    <div class="stat-pill">已開花城市 <b id="statCount">0</b> / 46</div>
+  </div>
+
+  <main>
+    <div id="map"></div>
+    <aside>
+      <h2>花況圖例</h2>
+      <div class="legend-row"><span class="legend-dot" style="background:var(--sakura-bud)"></span>尚未開花（含苞待放）</div>
+      <div class="legend-row"><span class="legend-dot" style="background:var(--sakura-light)"></span>剛開花</div>
+      <div class="legend-row"><span class="legend-dot" style="background:var(--sakura-mid)"></span>盛開中</div>
+      <div class="legend-row"><span class="legend-dot" style="background:var(--sakura-full)"></span>滿開</div>
+      <div class="legend-row"><span class="legend-dot" style="background:var(--sakura-peak)"></span>花期已過（開始飄零）</div>
+
+      <div id="trendChartWrap">
+        <h2>全國平均開花日趨勢</h2>
+        <canvas id="trendChart" height="140"></canvas>
+      </div>
+
+      <div>
+        <h2>本年度開花順序</h2>
+        <div id="cityList"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <span>資料來源：氣象觀測歷史紀錄整理（2010–2026）</span>
+    <span>下一步：整合 <a class="src-link" href="https://jptour.pages.dev" target="_blank" rel="noopener">jptour.pages.dev 櫻花前線</a> 即時追蹤</span>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script>
+const SAKURA_DATA = [{"pref": "北海道", "city": "札幌", "lat": 43.0642, "lon": 141.3469, "earliest": "4/15", "latest": "5/14", "avg": "5/1", "years": {"2026": {"kaika": "4/18", "kaika_doy": 108, "mankai": "4/24", "mankai_doy": 114}, "2025": {"kaika": "4/23", "kaika_doy": 113, "mankai": "4/27", "mankai_doy": 117}, "2024": {"kaika": "4/18", "kaika_doy": 108, "mankai": "4/24", "mankai_doy": 114}, "2023": {"kaika": "4/15", "kaika_doy": 105, "mankai": "4/21", "mankai_doy": 111}, "2022": {"kaika": "4/23", "kaika_doy": 113, "mankai": null, "mankai_doy": null}, "2021": {"kaika": "4/22", "kaika_doy": 112, "mankai": "4/27", "mankai_doy": 117}, "2020": {"kaika": "4/30", "kaika_doy": 120, "mankai": null, "mankai_doy": null}, "2019": {"kaika": "4/24", "kaika_doy": 114, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "4/26", "kaika_doy": 116, "mankai": "4/29", "mankai_doy": 119}, "2017": {"kaika": "4/28", "kaika_doy": 118, "mankai": "5/3", "mankai_doy": 123}, "2016": {"kaika": "4/25", "kaika_doy": 115, "mankai": "5/1", "mankai_doy": 121}, "2015": {"kaika": "4/22", "kaika_doy": 112, "mankai": "4/26", "mankai_doy": 116}, "2014": {"kaika": "4/29", "kaika_doy": 119, "mankai": "5/1", "mankai_doy": 121}, "2013": {"kaika": "5/13", "kaika_doy": 133, "mankai": "5/17", "mankai_doy": 137}, "2012": {"kaika": "5/1", "kaika_doy": 121, "mankai": "5/2", "mankai_doy": 122}, "2011": {"kaika": "5/7", "kaika_doy": 127, "mankai": "5/12", "mankai_doy": 132}, "2010": {"kaika": "5/7", "kaika_doy": 127, "mankai": "5/14", "mankai_doy": 134}}}, {"pref": "青森県", "city": "青森", "lat": 40.8246, "lon": 140.7406, "earliest": "4/7", "latest": "5/11", "avg": "4/22", "years": {"2026": {"kaika": "4/13", "kaika_doy": 103, "mankai": "4/16", "mankai_doy": 106}, "2025": {"kaika": "4/17", "kaika_doy": 107, "mankai": "4/22", "mankai_doy": 112}, "2024": {"kaika": "4/15", "kaika_doy": 105, "mankai": "4/18", "mankai_doy": 108}, "2023": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/11", "mankai_doy": 101}, "2022": {"kaika": "4/22", "kaika_doy": 112, "mankai": "4/26", "mankai_doy": 116}, "2021": {"kaika": "4/13", "kaika_doy": 103, "mankai": "4/17", "mankai_doy": 107}, "2020": {"kaika": "4/17", "kaika_doy": 107, "mankai": null, "mankai_doy": null}, "2019": {"kaika": null, "kaika_doy": null, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "4/19", "kaika_doy": 109, "mankai": "4/22", "mankai_doy": 112}, "2017": {"kaika": "4/17", "kaika_doy": 107, "mankai": "4/21", "mankai_doy": 111}, "2016": {"kaika": "4/17", "kaika_doy": 107, "mankai": "4/21", "mankai_doy": 111}, "2015": {"kaika": "4/14", "kaika_doy": 104, "mankai": "4/19", "mankai_doy": 109}, "2014": {"kaika": "4/22", "kaika_doy": 112, "mankai": "4/25", "mankai_doy": 115}, "2013": {"kaika": "4/29", "kaika_doy": 119, "mankai": "5/6", "mankai_doy": 126}, "2012": {"kaika": "4/29", "kaika_doy": 119, "mankai": "5/1", "mankai_doy": 121}, "2011": {"kaika": "4/25", "kaika_doy": 115, "mankai": "4/28", "mankai_doy": 118}, "2010": {"kaika": "4/28", "kaika_doy": 118, "mankai": "5/2", "mankai_doy": 122}}}, {"pref": "岩手県", "city": "盛岡", "lat": 39.7036, "lon": 141.1527, "earliest": "4/3", "latest": "5/6", "avg": "4/18", "years": {"2026": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/12", "mankai_doy": 102}, "2025": {"kaika": "4/13", "kaika_doy": 103, "mankai": "4/19", "mankai_doy": 109}, "2024": {"kaika": "4/12", "kaika_doy": 102, "mankai": "4/14", "mankai_doy": 104}, "2023": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/6", "mankai_doy": 96}, "2022": {"kaika": "4/13", "kaika_doy": 103, "mankai": null, "mankai_doy": null}, "2021": {"kaika": "4/9", "kaika_doy": 99, "mankai": "4/13", "mankai_doy": 103}, "2020": {"kaika": "4/14", "kaika_doy": 104, "mankai": null, "mankai_doy": null}, "2019": {"kaika": null, "kaika_doy": null, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "4/17", "kaika_doy": 107, "mankai": "4/20", "mankai_doy": 110}, "2017": {"kaika": "4/17", "kaika_doy": 107, "mankai": "4/24", "mankai_doy": 114}, "2016": {"kaika": "4/11", "kaika_doy": 101, "mankai": "4/18", "mankai_doy": 108}, "2015": {"kaika": "4/9", "kaika_doy": 99, "mankai": "4/16", "mankai_doy": 106}, "2014": {"kaika": "4/13", "kaika_doy": 103, "mankai": "4/21", "mankai_doy": 111}, "2013": {"kaika": "4/23", "kaika_doy": 113, "mankai": "5/2", "mankai_doy": 122}, "2012": {"kaika": "4/24", "kaika_doy": 114, "mankai": "4/28", "mankai_doy": 118}, "2011": {"kaika": "4/20", "kaika_doy": 110, "mankai": "4/29", "mankai_doy": 119}, "2010": {"kaika": "4/25", "kaika_doy": 115, "mankai": "5/2", "mankai_doy": 122}}}, {"pref": "宮城県", "city": "仙台", "lat": 38.2682, "lon": 140.8694, "earliest": "3/26", "latest": "4/28", "avg": "4/8", "years": {"2026": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/4", "mankai_doy": 94}, "2025": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/10", "mankai_doy": 100}, "2024": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2023": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/31", "mankai_doy": 90}, "2022": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/11", "mankai_doy": 101}, "2021": {"kaika": "3/28", "kaika_doy": 87, "mankai": "3/31", "mankai_doy": 90}, "2020": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "4/5", "kaika_doy": 95, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/4", "mankai_doy": 94}, "2017": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/13", "mankai_doy": 103}, "2016": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/6", "mankai_doy": 96}, "2015": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/9", "mankai_doy": 99}, "2014": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/11", "mankai_doy": 101}, "2013": {"kaika": "4/9", "kaika_doy": 99, "mankai": "4/15", "mankai_doy": 105}, "2012": {"kaika": "4/18", "kaika_doy": 108, "mankai": "4/23", "mankai_doy": 113}, "2011": {"kaika": "4/12", "kaika_doy": 102, "mankai": "4/15", "mankai_doy": 105}, "2010": {"kaika": "4/13", "kaika_doy": 103, "mankai": "4/21", "mankai_doy": 111}}}, {"pref": "秋田県", "city": "秋田", "lat": 39.7186, "lon": 140.1024, "earliest": "4/4", "latest": "4/30", "avg": "4/17", "years": {"2026": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/9", "mankai_doy": 99}, "2025": {"kaika": "4/13", "kaika_doy": 103, "mankai": "4/18", "mankai_doy": 108}, "2024": {"kaika": "4/10", "kaika_doy": 100, "mankai": "4/14", "mankai_doy": 104}, "2023": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/7", "mankai_doy": 97}, "2022": {"kaika": "4/12", "kaika_doy": 102, "mankai": null, "mankai_doy": null}, "2021": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/7", "mankai_doy": 97}, "2020": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/15", "mankai_doy": 105}, "2019": {"kaika": null, "kaika_doy": null, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "4/17", "kaika_doy": 107, "mankai": "4/20", "mankai_doy": 110}, "2017": {"kaika": "4/16", "kaika_doy": 106, "mankai": "4/19", "mankai_doy": 109}, "2016": {"kaika": "4/14", "kaika_doy": 104, "mankai": "4/19", "mankai_doy": 109}, "2015": {"kaika": "4/11", "kaika_doy": 101, "mankai": "4/15", "mankai_doy": 105}, "2014": {"kaika": "4/20", "kaika_doy": 110, "mankai": "4/24", "mankai_doy": 114}, "2013": {"kaika": "4/23", "kaika_doy": 113, "mankai": "4/29", "mankai_doy": 119}, "2012": {"kaika": "4/24", "kaika_doy": 114, "mankai": "4/26", "mankai_doy": 116}, "2011": {"kaika": "4/23", "kaika_doy": 113, "mankai": "4/27", "mankai_doy": 117}, "2010": {"kaika": "4/24", "kaika_doy": 114, "mankai": "4/28", "mankai_doy": 118}}}, {"pref": "山形県", "city": "山形", "lat": 38.2404, "lon": 140.3633, "earliest": "3/31", "latest": "4/29", "avg": "4/13", "years": {"2026": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/6", "mankai_doy": 96}, "2025": {"kaika": "4/9", "kaika_doy": 99, "mankai": "4/14", "mankai_doy": 104}, "2024": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/10", "mankai_doy": 100}, "2023": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/5", "mankai_doy": 95}, "2022": {"kaika": "4/11", "kaika_doy": 101, "mankai": "4/13", "mankai_doy": 103}, "2021": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/5", "mankai_doy": 95}, "2020": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/9", "mankai_doy": 99}, "2019": {"kaika": null, "kaika_doy": null, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/11", "mankai_doy": 101}, "2017": {"kaika": "4/14", "kaika_doy": 104, "mankai": "4/17", "mankai_doy": 107}, "2016": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/10", "mankai_doy": 100}, "2015": {"kaika": "4/10", "kaika_doy": 100, "mankai": "4/15", "mankai_doy": 105}, "2014": {"kaika": "4/14", "kaika_doy": 104, "mankai": "4/17", "mankai_doy": 107}, "2013": {"kaika": "4/15", "kaika_doy": 105, "mankai": "4/19", "mankai_doy": 109}, "2012": {"kaika": "4/23", "kaika_doy": 113, "mankai": "4/26", "mankai_doy": 116}, "2011": {"kaika": "4/18", "kaika_doy": 108, "mankai": "4/25", "mankai_doy": 115}, "2010": {"kaika": "4/19", "kaika_doy": 109, "mankai": "4/25", "mankai_doy": 115}}}, {"pref": "福島県", "city": "福島", "lat": 37.75, "lon": 140.4678, "earliest": "3/24", "latest": "4/25", "avg": "4/7", "years": {"2026": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/8", "mankai_doy": 98}, "2024": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/7", "mankai_doy": 97}, "2023": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/28", "mankai_doy": 87}, "2022": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/8", "mankai_doy": 98}, "2021": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/29", "mankai_doy": 88}, "2020": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/1", "mankai_doy": 91}, "2019": {"kaika": "4/5", "kaika_doy": 95, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/2", "mankai_doy": 92}, "2017": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/12", "mankai_doy": 102}, "2016": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/3", "mankai_doy": 93}, "2015": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/6", "mankai_doy": 96}, "2014": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/11", "mankai_doy": 101}, "2013": {"kaika": "4/5", "kaika_doy": 95, "mankai": "4/8", "mankai_doy": 98}, "2012": {"kaika": "4/16", "kaika_doy": 106, "mankai": "4/20", "mankai_doy": 110}, "2011": {"kaika": "4/12", "kaika_doy": 102, "mankai": "4/15", "mankai_doy": 105}, "2010": {"kaika": "4/9", "kaika_doy": 99, "mankai": "4/13", "mankai_doy": 103}}}, {"pref": "茨城県", "city": "水戸", "lat": 36.3418, "lon": 140.4468, "earliest": "3/20", "latest": "4/20", "avg": "3/30", "years": {"2026": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/8", "mankai_doy": 98}, "2024": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/8", "mankai_doy": 98}, "2023": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/6", "mankai_doy": 96}, "2021": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/30", "mankai_doy": 89}, "2020": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/31", "mankai_doy": 90}, "2019": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/10", "mankai_doy": 100}, "2016": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/6", "mankai_doy": 96}, "2015": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/4", "mankai_doy": 94}, "2014": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/2", "mankai_doy": 92}, "2013": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/1", "mankai_doy": 91}, "2012": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/12", "mankai_doy": 102}, "2011": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/12", "mankai_doy": 102}, "2010": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/7", "mankai_doy": 97}}}, {"pref": "栃木県", "city": "宇都宮", "lat": 36.5551, "lon": 139.8828, "earliest": "3/18", "latest": "4/18", "avg": "3/30", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/9", "mankai_doy": 99}, "2024": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/11", "mankai_doy": 101}, "2023": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/30", "mankai_doy": 89}, "2022": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2021": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/31", "mankai_doy": 90}, "2020": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/28", "kaika_doy": 87, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/9", "mankai_doy": 99}, "2016": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/4", "mankai_doy": 94}, "2015": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/2", "mankai_doy": 92}, "2014": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/4", "mankai_doy": 94}, "2013": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/29", "mankai_doy": 88}, "2012": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/12", "mankai_doy": 102}, "2011": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/12", "mankai_doy": 102}, "2010": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/8", "mankai_doy": 98}}}, {"pref": "群馬県", "city": "前橋", "lat": 36.3911, "lon": 139.0608, "earliest": "3/18", "latest": "4/15", "avg": "3/29", "years": {"2026": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}, "2025": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/7", "mankai_doy": 97}, "2024": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/8", "mankai_doy": 98}, "2023": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/24", "mankai_doy": 83}, "2022": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2021": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/28", "mankai_doy": 87}, "2020": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/26", "mankai_doy": 85}, "2019": {"kaika": "3/27", "kaika_doy": 86, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/1", "mankai_doy": 91}, "2015": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/3", "mankai_doy": 93}, "2013": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}, "2012": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/12", "mankai_doy": 102}, "2011": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/11", "mankai_doy": 101}, "2010": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/6", "mankai_doy": 96}}}, {"pref": "埼玉県", "city": "熊谷", "lat": 36.147, "lon": 139.3888, "earliest": "3/17", "latest": "4/14", "avg": "3/27", "years": {"2026": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/7", "mankai_doy": 97}, "2024": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/8", "mankai_doy": 98}, "2023": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/24", "mankai_doy": 83}, "2022": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/29", "mankai_doy": 88}, "2020": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/25", "mankai_doy": 84}, "2019": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/4", "mankai_doy": 94}, "2018": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/26", "mankai_doy": 85}, "2017": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/1", "mankai_doy": 91}, "2015": {"kaika": "3/27", "kaika_doy": 86, "mankai": "3/30", "mankai_doy": 89}, "2014": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/1", "mankai_doy": 91}, "2013": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/26", "mankai_doy": 85}, "2012": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/10", "mankai_doy": 100}, "2011": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/8", "mankai_doy": 98}, "2010": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/6", "mankai_doy": 96}}}, {"pref": "千葉県", "city": "銚子", "lat": 35.7346, "lon": 140.8267, "earliest": "3/19", "latest": "4/16", "avg": "3/30", "years": {"2026": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/7", "mankai_doy": 97}, "2024": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/30", "mankai_doy": 89}, "2022": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/6", "mankai_doy": 96}, "2021": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/28", "mankai_doy": 87}, "2020": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/10", "mankai_doy": 100}, "2016": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/6", "mankai_doy": 96}, "2015": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/6", "mankai_doy": 96}, "2014": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/4", "mankai_doy": 94}, "2013": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/28", "mankai_doy": 87}, "2012": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/11", "mankai_doy": 101}, "2011": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/12", "mankai_doy": 102}, "2010": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/8", "mankai_doy": 98}}}, {"pref": "東京都", "city": "都心", "lat": 35.6895, "lon": 139.6917, "earliest": "3/14", "latest": "4/11", "avg": "3/24", "years": {"2026": {"kaika": "3/29", "kaika_doy": 88, "mankai": "3/28", "mankai_doy": 87}, "2025": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/30", "mankai_doy": 89}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/4", "mankai_doy": 94}, "2023": {"kaika": "3/14", "kaika_doy": 73, "mankai": "3/22", "mankai_doy": 81}, "2022": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2021": {"kaika": "3/14", "kaika_doy": 73, "mankai": "3/22", "mankai_doy": 81}, "2020": {"kaika": "3/14", "kaika_doy": 73, "mankai": "3/22", "mankai_doy": 81}, "2019": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/27", "mankai_doy": 86}, "2018": {"kaika": "3/27", "kaika_doy": 86, "mankai": "3/24", "mankai_doy": 83}, "2017": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/2", "mankai_doy": 92}, "2016": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/31", "mankai_doy": 90}, "2015": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/29", "mankai_doy": 88}, "2014": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/30", "mankai_doy": 89}, "2013": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/22", "mankai_doy": 81}, "2012": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/6", "mankai_doy": 96}, "2011": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/6", "mankai_doy": 96}, "2010": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}}}, {"pref": "神奈川県", "city": "横浜", "lat": 35.4437, "lon": 139.638, "earliest": "3/15", "latest": "4/10", "avg": "3/25", "years": {"2026": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}, "2025": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2023": {"kaika": "3/15", "kaika_doy": 74, "mankai": "3/25", "mankai_doy": 84}, "2022": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/28", "mankai_doy": 87}, "2021": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/28", "mankai_doy": 87}, "2019": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/1", "mankai_doy": 91}, "2018": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/27", "mankai_doy": 86}, "2017": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/6", "mankai_doy": 96}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/2", "mankai_doy": 92}, "2015": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/31", "mankai_doy": 90}, "2013": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/22", "mankai_doy": 81}, "2012": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2011": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/8", "mankai_doy": 98}, "2010": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/2", "mankai_doy": 92}}}, {"pref": "山梨県", "city": "甲府", "lat": 35.6642, "lon": 138.5684, "earliest": "3/17", "latest": "4/12", "avg": "3/25", "years": {"2026": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}, "2025": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/24", "mankai_doy": 83}, "2022": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/28", "mankai_doy": 87}, "2021": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/29", "mankai_doy": 88}, "2020": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/2", "mankai_doy": 92}, "2019": {"kaika": "3/27", "kaika_doy": 86, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/9", "mankai_doy": 99}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/3", "mankai_doy": 93}, "2015": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/4", "mankai_doy": 94}, "2013": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/26", "mankai_doy": 85}, "2012": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2011": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/8", "mankai_doy": 98}, "2010": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/28", "mankai_doy": 87}}}, {"pref": "新潟県", "city": "新潟", "lat": 37.9161, "lon": 139.0364, "earliest": "3/27", "latest": "4/26", "avg": "4/8", "years": {"2026": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/9", "mankai_doy": 99}, "2024": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/11", "mankai_doy": 101}, "2023": {"kaika": "3/27", "kaika_doy": 86, "mankai": "3/31", "mankai_doy": 90}, "2022": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/11", "mankai_doy": 101}, "2021": {"kaika": "3/29", "kaika_doy": 88, "mankai": "3/31", "mankai_doy": 90}, "2020": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2019": {"kaika": "4/5", "kaika_doy": 95, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/5", "mankai_doy": 95}, "2017": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/13", "mankai_doy": 103}, "2016": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/7", "mankai_doy": 97}, "2015": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2014": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/12", "mankai_doy": 102}, "2013": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/12", "mankai_doy": 102}, "2012": {"kaika": "4/16", "kaika_doy": 106, "mankai": "4/20", "mankai_doy": 110}, "2011": {"kaika": "4/14", "kaika_doy": 104, "mankai": "4/18", "mankai_doy": 108}, "2010": {"kaika": "4/11", "kaika_doy": 101, "mankai": "4/17", "mankai_doy": 107}}}, {"pref": "長野県", "city": "長野", "lat": 36.6513, "lon": 138.181, "earliest": "3/28", "latest": "4/26", "avg": "4/11", "years": {"2026": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/6", "mankai_doy": 96}, "2025": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/13", "mankai_doy": 103}, "2024": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/11", "mankai_doy": 101}, "2023": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/3", "mankai_doy": 93}, "2022": {"kaika": "4/9", "kaika_doy": 99, "mankai": "4/11", "mankai_doy": 101}, "2021": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/1", "mankai_doy": 91}, "2020": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/13", "mankai_doy": 103}, "2019": {"kaika": null, "kaika_doy": null, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/6", "mankai_doy": 96}, "2017": {"kaika": "4/14", "kaika_doy": 104, "mankai": "4/17", "mankai_doy": 107}, "2016": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/8", "mankai_doy": 98}, "2015": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/10", "mankai_doy": 100}, "2014": {"kaika": "4/11", "kaika_doy": 101, "mankai": "4/17", "mankai_doy": 107}, "2013": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/15", "mankai_doy": 105}, "2012": {"kaika": "4/18", "kaika_doy": 108, "mankai": "4/21", "mankai_doy": 111}, "2011": {"kaika": "4/15", "kaika_doy": 105, "mankai": "4/21", "mankai_doy": 111}, "2010": {"kaika": "4/9", "kaika_doy": 99, "mankai": "4/13", "mankai_doy": 103}}}, {"pref": "富山県", "city": "富山", "lat": 36.6953, "lon": 137.2113, "earliest": "3/22", "latest": "4/20", "avg": "4/3", "years": {"2026": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/2", "mankai_doy": 92}, "2025": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/6", "mankai_doy": 96}, "2024": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/10", "mankai_doy": 100}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/6", "mankai_doy": 96}, "2021": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/28", "mankai_doy": 87}, "2020": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/27", "kaika_doy": 86, "mankai": "3/30", "mankai_doy": 89}, "2017": {"kaika": "4/5", "kaika_doy": 95, "mankai": "4/8", "mankai_doy": 98}, "2016": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/1", "mankai_doy": 91}, "2015": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/4", "mankai_doy": 94}, "2014": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/8", "mankai_doy": 98}, "2013": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/6", "mankai_doy": 96}, "2012": {"kaika": "4/12", "kaika_doy": 102, "mankai": "4/16", "mankai_doy": 106}, "2011": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/11", "mankai_doy": 101}, "2010": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/6", "mankai_doy": 96}}}, {"pref": "石川県", "city": "金沢", "lat": 36.5613, "lon": 136.6562, "earliest": "3/23", "latest": "4/17", "avg": "4/3", "years": {"2026": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/6", "mankai_doy": 96}, "2024": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/8", "mankai_doy": 98}, "2023": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2022": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/5", "mankai_doy": 95}, "2021": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/29", "mankai_doy": 88}, "2020": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/1", "mankai_doy": 91}, "2019": {"kaika": "4/1", "kaika_doy": 91, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/3", "mankai_doy": 93}, "2017": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/8", "mankai_doy": 98}, "2016": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/4", "mankai_doy": 94}, "2015": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/4", "mankai_doy": 94}, "2014": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2013": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/5", "mankai_doy": 95}, "2012": {"kaika": "4/10", "kaika_doy": 100, "mankai": "4/13", "mankai_doy": 103}, "2011": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/12", "mankai_doy": 102}, "2010": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/6", "mankai_doy": 96}}}, {"pref": "福井県", "city": "福井", "lat": 36.0652, "lon": 136.2216, "earliest": "3/22", "latest": "4/17", "avg": "4/1", "years": {"2026": {"kaika": "3/29", "kaika_doy": 88, "mankai": "3/31", "mankai_doy": 90}, "2025": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/9", "mankai_doy": 99}, "2024": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/6", "mankai_doy": 96}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/6", "mankai_doy": 96}, "2021": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/31", "mankai_doy": 90}, "2019": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/2", "mankai_doy": 92}, "2017": {"kaika": "4/5", "kaika_doy": 95, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/27", "kaika_doy": 86, "mankai": "3/31", "mankai_doy": 90}, "2015": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/3", "mankai_doy": 93}, "2014": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/3", "mankai_doy": 93}, "2013": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/2", "mankai_doy": 92}, "2012": {"kaika": "4/10", "kaika_doy": 100, "mankai": "4/13", "mankai_doy": 103}, "2011": {"kaika": "4/7", "kaika_doy": 97, "mankai": "4/13", "mankai_doy": 103}, "2010": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/6", "mankai_doy": 96}}}, {"pref": "岐阜県", "city": "岐阜", "lat": 35.3912, "lon": 136.7223, "earliest": "3/16", "latest": "4/12", "avg": "3/25", "years": {"2026": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/26", "mankai_doy": 85}, "2025": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/31", "mankai_doy": 90}, "2024": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/4", "mankai_doy": 94}, "2023": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/23", "mankai_doy": 82}, "2022": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/28", "mankai_doy": 87}, "2021": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/1", "mankai_doy": 91}, "2019": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/2", "mankai_doy": 92}, "2018": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/26", "mankai_doy": 85}, "2017": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/4", "mankai_doy": 94}, "2016": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/31", "mankai_doy": 90}, "2015": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2014": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2013": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/29", "mankai_doy": 88}, "2012": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/6", "mankai_doy": 96}, "2011": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/4", "mankai_doy": 94}, "2010": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/31", "mankai_doy": 90}}}, {"pref": "愛知県", "city": "名古屋", "lat": 35.1815, "lon": 136.9066, "earliest": "3/17", "latest": "4/11", "avg": "3/25", "years": {"2026": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/26", "mankai_doy": 85}, "2025": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/7", "mankai_doy": 97}, "2023": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/28", "mankai_doy": 87}, "2020": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}, "2019": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/4", "mankai_doy": 94}, "2018": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/27", "mankai_doy": 86}, "2017": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/6", "mankai_doy": 96}, "2016": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/31", "mankai_doy": 90}, "2015": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/30", "mankai_doy": 89}, "2014": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2013": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/28", "mankai_doy": 87}, "2012": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/6", "mankai_doy": 96}, "2011": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/6", "mankai_doy": 96}, "2010": {"kaika": "3/18", "kaika_doy": 77, "mankai": "4/2", "mankai_doy": 92}}}, {"pref": "静岡県", "city": "静岡", "lat": 34.9756, "lon": 138.3828, "earliest": "3/15", "latest": "4/6", "avg": "3/24", "years": {"2026": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/2", "mankai_doy": 92}, "2025": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/3", "mankai_doy": 93}, "2024": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/8", "mankai_doy": 98}, "2023": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/29", "mankai_doy": 88}, "2022": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/28", "mankai_doy": 87}, "2020": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/7", "mankai_doy": 97}, "2019": {"kaika": "3/28", "kaika_doy": 87, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/27", "mankai_doy": 86}, "2017": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/12", "mankai_doy": 102}, "2016": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2015": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2013": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/23", "mankai_doy": 82}, "2012": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/1", "mankai_doy": 91}, "2011": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/4", "mankai_doy": 94}, "2010": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/26", "mankai_doy": 85}}}, {"pref": "三重県", "city": "津", "lat": 34.7185, "lon": 136.5086, "earliest": "3/20", "latest": "4/12", "avg": "3/29", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/29", "mankai_doy": 88}, "2025": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/2", "mankai_doy": 92}, "2024": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/2", "mankai_doy": 92}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/25", "mankai_doy": 84}, "2020": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/31", "mankai_doy": 90}, "2019": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/3", "mankai_doy": 93}, "2018": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/5", "mankai_doy": 95}, "2016": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/2", "mankai_doy": 92}, "2015": {"kaika": "3/29", "kaika_doy": 88, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2013": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/30", "mankai_doy": 89}, "2012": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/8", "mankai_doy": 98}, "2011": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/5", "mankai_doy": 95}, "2010": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/1", "mankai_doy": 91}}}, {"pref": "滋賀県", "city": "彦根", "lat": 35.2745, "lon": 136.2597, "earliest": "3/22", "latest": "4/15", "avg": "4/1", "years": {"2026": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/2", "mankai_doy": 92}, "2025": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/9", "mankai_doy": 99}, "2024": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2023": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2022": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/6", "mankai_doy": 96}, "2021": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/20", "mankai_doy": 79}, "2020": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "4/4", "kaika_doy": 94, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2017": {"kaika": "4/5", "kaika_doy": 95, "mankai": "4/9", "mankai_doy": 99}, "2016": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/5", "mankai_doy": 95}, "2015": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/4", "mankai_doy": 94}, "2014": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2013": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/5", "mankai_doy": 95}, "2012": {"kaika": "4/8", "kaika_doy": 98, "mankai": "4/12", "mankai_doy": 102}, "2011": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/11", "mankai_doy": 101}, "2010": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}}}, {"pref": "京都府", "city": "京都", "lat": 35.0116, "lon": 135.7681, "earliest": "3/16", "latest": "4/9", "avg": "3/26", "years": {"2026": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/24", "mankai_doy": 83}, "2022": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/26", "mankai_doy": 85}, "2020": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/30", "mankai_doy": 89}, "2019": {"kaika": "3/27", "kaika_doy": 86, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/2", "mankai_doy": 92}, "2015": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2013": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/30", "mankai_doy": 89}, "2012": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/9", "mankai_doy": 99}, "2011": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/7", "mankai_doy": 97}, "2010": {"kaika": "3/19", "kaika_doy": 78, "mankai": "4/1", "mankai_doy": 91}}}, {"pref": "大阪府", "city": "大阪", "lat": 34.6937, "lon": 135.5023, "earliest": "3/19", "latest": "4/10", "avg": "3/27", "years": {"2026": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/6", "mankai_doy": 96}, "2023": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/28", "mankai_doy": 87}, "2020": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/4", "mankai_doy": 94}, "2018": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/26", "mankai_doy": 85}, "2017": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/6", "mankai_doy": 96}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/1", "mankai_doy": 91}, "2015": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2013": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/29", "mankai_doy": 88}, "2012": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2011": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/7", "mankai_doy": 97}, "2010": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/4", "mankai_doy": 94}}}, {"pref": "兵庫県", "city": "神戸", "lat": 34.6901, "lon": 135.1955, "earliest": "3/20", "latest": "4/10", "avg": "3/27", "years": {"2026": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2024": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2023": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2022": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/1", "mankai_doy": 91}, "2021": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/30", "mankai_doy": 89}, "2020": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/27", "kaika_doy": 86, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/10", "mankai_doy": 100}, "2016": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/3", "mankai_doy": 93}, "2015": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2014": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2013": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/31", "mankai_doy": 90}, "2012": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2011": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/10", "mankai_doy": 100}, "2010": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/4", "mankai_doy": 94}}}, {"pref": "奈良県", "city": "奈良", "lat": 34.6851, "lon": 135.8048, "earliest": "3/20", "latest": "4/12", "avg": "3/28", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2025": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/8", "mankai_doy": 98}, "2023": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/31", "mankai_doy": 90}, "2021": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/30", "mankai_doy": 89}, "2020": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/8", "mankai_doy": 98}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/2", "mankai_doy": 92}, "2015": {"kaika": "3/27", "kaika_doy": 86, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2013": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/29", "mankai_doy": 88}, "2012": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/9", "mankai_doy": 99}, "2011": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/8", "mankai_doy": 98}, "2010": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/2", "mankai_doy": 92}}}, {"pref": "和歌山県", "city": "和歌山", "lat": 34.2261, "lon": 135.1675, "earliest": "3/16", "latest": "4/6", "avg": "3/24", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/2", "mankai_doy": 92}, "2025": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/30", "mankai_doy": 89}, "2024": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/3", "mankai_doy": 93}, "2023": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/25", "mankai_doy": 84}, "2022": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/29", "mankai_doy": 88}, "2021": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/31", "mankai_doy": 90}, "2019": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/1", "mankai_doy": 91}, "2018": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2017": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/31", "mankai_doy": 90}, "2015": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2014": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/31", "mankai_doy": 90}, "2013": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/26", "mankai_doy": 85}, "2012": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/4", "mankai_doy": 94}, "2011": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/7", "mankai_doy": 97}, "2010": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/31", "mankai_doy": 90}}}, {"pref": "鳥取県", "city": "鳥取", "lat": 35.5036, "lon": 134.2383, "earliest": "3/19", "latest": "4/13", "avg": "3/29", "years": {"2026": {"kaika": "3/28", "kaika_doy": 87, "mankai": "3/31", "mankai_doy": 90}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/6", "mankai_doy": 96}, "2023": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/24", "mankai_doy": 83}, "2022": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2021": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/29", "mankai_doy": 88}, "2020": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/31", "mankai_doy": 90}, "2019": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/4", "mankai_doy": 94}, "2018": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/31", "mankai_doy": 90}, "2015": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2013": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/29", "mankai_doy": 88}, "2012": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/10", "mankai_doy": 100}, "2011": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/8", "mankai_doy": 98}, "2010": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/4", "mankai_doy": 94}}}, {"pref": "島根県", "city": "松江", "lat": 35.4723, "lon": 133.0505, "earliest": "3/14", "latest": "4/13", "avg": "3/29", "years": {"2026": {"kaika": "3/27", "kaika_doy": 86, "mankai": "3/31", "mankai_doy": 90}, "2025": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2024": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/3", "mankai_doy": 93}, "2023": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/31", "mankai_doy": 90}, "2021": {"kaika": "3/14", "kaika_doy": 73, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2019": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/1", "mankai_doy": 91}, "2018": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2015": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/2", "mankai_doy": 92}, "2014": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2013": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/31", "mankai_doy": 90}, "2012": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/10", "mankai_doy": 100}, "2011": {"kaika": "4/6", "kaika_doy": 96, "mankai": "4/12", "mankai_doy": 102}, "2010": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/3", "mankai_doy": 93}}}, {"pref": "岡山県", "city": "岡山", "lat": 34.6551, "lon": 133.9195, "earliest": "3/20", "latest": "4/10", "avg": "3/28", "years": {"2026": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/31", "mankai_doy": 90}, "2025": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/5", "mankai_doy": 95}, "2024": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/27", "mankai_doy": 86}, "2022": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/29", "mankai_doy": 88}, "2020": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2019": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/1", "mankai_doy": 91}, "2015": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/2", "mankai_doy": 92}, "2014": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/2", "mankai_doy": 92}, "2013": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2012": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/9", "mankai_doy": 99}, "2011": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/7", "mankai_doy": 97}, "2010": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/3", "mankai_doy": 93}}}, {"pref": "広島県", "city": "広島", "lat": 34.3853, "lon": 132.4553, "earliest": "3/11", "latest": "4/8", "avg": "3/25", "years": {"2026": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/30", "mankai_doy": 89}, "2025": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/2", "mankai_doy": 92}, "2024": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/28", "mankai_doy": 87}, "2022": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/29", "mankai_doy": 88}, "2021": {"kaika": "3/11", "kaika_doy": 70, "mankai": "3/25", "mankai_doy": 84}, "2020": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/3", "mankai_doy": 93}, "2018": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/2", "mankai_doy": 92}, "2015": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/30", "mankai_doy": 89}, "2014": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/30", "mankai_doy": 89}, "2013": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/29", "mankai_doy": 88}, "2012": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2011": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/10", "mankai_doy": 100}, "2010": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/2", "mankai_doy": 92}}}, {"pref": "山口県", "city": "下関", "lat": 33.9578, "lon": 130.9407, "earliest": "3/16", "latest": "4/6", "avg": "3/26", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/5", "mankai_doy": 95}, "2025": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/31", "mankai_doy": 90}, "2022": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/1", "mankai_doy": 91}, "2021": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/26", "mankai_doy": 85}, "2020": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/5", "mankai_doy": 95}, "2019": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/3", "mankai_doy": 93}, "2015": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/30", "mankai_doy": 89}, "2013": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/28", "mankai_doy": 87}, "2012": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/6", "mankai_doy": 96}, "2011": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/7", "mankai_doy": 97}, "2010": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/1", "mankai_doy": 91}}}, {"pref": "徳島県", "city": "徳島", "lat": 34.0658, "lon": 134.5593, "earliest": "3/18", "latest": "4/6", "avg": "3/28", "years": {"2026": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/6", "mankai_doy": 96}, "2025": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/5", "mankai_doy": 95}, "2024": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/6", "mankai_doy": 96}, "2023": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/31", "mankai_doy": 90}, "2022": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/30", "mankai_doy": 89}, "2021": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/1", "mankai_doy": 91}, "2020": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2019": {"kaika": "3/28", "kaika_doy": 87, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/28", "mankai_doy": 87}, "2017": {"kaika": "4/3", "kaika_doy": 93, "mankai": "4/10", "mankai_doy": 100}, "2016": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/8", "mankai_doy": 98}, "2015": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/3", "mankai_doy": 93}, "2014": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/1", "mankai_doy": 91}, "2013": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/30", "mankai_doy": 89}, "2012": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/5", "mankai_doy": 95}, "2011": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/8", "mankai_doy": 98}, "2010": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/6", "mankai_doy": 96}}}, {"pref": "香川県", "city": "高松", "lat": 34.3401, "lon": 134.0434, "earliest": "3/15", "latest": "4/8", "avg": "3/27", "years": {"2026": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/1", "mankai_doy": 91}, "2025": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/3", "mankai_doy": 93}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/29", "mankai_doy": 88}, "2022": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/20", "mankai_doy": 79}, "2021": {"kaika": "3/15", "kaika_doy": 74, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/4", "mankai_doy": 94}, "2019": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/4", "mankai_doy": 94}, "2018": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/8", "mankai_doy": 98}, "2016": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/4", "mankai_doy": 94}, "2015": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/26", "kaika_doy": 85, "mankai": "3/31", "mankai_doy": 90}, "2013": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/30", "mankai_doy": 89}, "2012": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/6", "mankai_doy": 96}, "2011": {"kaika": "3/31", "kaika_doy": 90, "mankai": "4/8", "mankai_doy": 98}, "2010": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/4", "mankai_doy": 94}}}, {"pref": "愛媛県", "city": "松山", "lat": 33.8392, "lon": 132.7657, "earliest": "3/14", "latest": "4/6", "avg": "3/24", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/4", "mankai_doy": 94}, "2025": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/30", "mankai_doy": 89}, "2024": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/28", "mankai_doy": 87}, "2022": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/28", "mankai_doy": 87}, "2021": {"kaika": "3/15", "kaika_doy": 74, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/9", "mankai_doy": 99}, "2019": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/27", "mankai_doy": 86}, "2017": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/8", "mankai_doy": 98}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/3", "mankai_doy": 93}, "2015": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/29", "mankai_doy": 88}, "2013": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/27", "mankai_doy": 86}, "2012": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/4", "mankai_doy": 94}, "2011": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/6", "mankai_doy": 96}, "2010": {"kaika": "3/14", "kaika_doy": 73, "mankai": "4/2", "mankai_doy": 92}}}, {"pref": "高知県", "city": "高知", "lat": 33.5597, "lon": 133.5311, "earliest": "3/10", "latest": "4/2", "avg": "3/22", "years": {"2026": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/31", "mankai_doy": 90}, "2025": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/28", "mankai_doy": 87}, "2024": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/31", "mankai_doy": 90}, "2023": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/24", "mankai_doy": 83}, "2022": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/27", "mankai_doy": 86}, "2021": {"kaika": "3/15", "kaika_doy": 74, "mankai": "3/23", "mankai_doy": 82}, "2020": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/2", "mankai_doy": 92}, "2019": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/29", "mankai_doy": 88}, "2018": {"kaika": "3/15", "kaika_doy": 74, "mankai": "3/19", "mankai_doy": 78}, "2017": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/6", "mankai_doy": 96}, "2016": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/2", "mankai_doy": 92}, "2015": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/30", "mankai_doy": 89}, "2014": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/25", "mankai_doy": 84}, "2013": {"kaika": "3/15", "kaika_doy": 74, "mankai": "3/22", "mankai_doy": 81}, "2012": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/27", "mankai_doy": 86}, "2011": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/31", "mankai_doy": 90}, "2010": {"kaika": "3/10", "kaika_doy": 69, "mankai": "3/21", "mankai_doy": 80}}}, {"pref": "福岡県", "city": "福岡", "lat": 33.5904, "lon": 130.4017, "earliest": "3/12", "latest": "4/6", "avg": "3/22", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/28", "mankai_doy": 87}, "2024": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/2", "mankai_doy": 92}, "2023": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/26", "mankai_doy": 85}, "2022": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/27", "mankai_doy": 86}, "2021": {"kaika": "3/12", "kaika_doy": 71, "mankai": "3/22", "mankai_doy": 81}, "2020": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/2", "mankai_doy": 92}, "2019": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/29", "mankai_doy": 88}, "2018": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/27", "mankai_doy": 86}, "2017": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/5", "mankai_doy": 95}, "2016": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/30", "mankai_doy": 89}, "2015": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/29", "mankai_doy": 88}, "2014": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/27", "mankai_doy": 86}, "2013": {"kaika": "3/13", "kaika_doy": 72, "mankai": "3/22", "mankai_doy": 81}, "2012": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/1", "mankai_doy": 91}, "2011": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/2", "mankai_doy": 92}, "2010": {"kaika": "3/14", "kaika_doy": 73, "mankai": "3/25", "mankai_doy": 84}}}, {"pref": "佐賀県", "city": "佐賀", "lat": 33.2494, "lon": 130.2988, "earliest": "3/17", "latest": "4/2", "avg": "3/24", "years": {"2026": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/2", "mankai_doy": 92}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/2", "mankai_doy": 92}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/31", "mankai_doy": 90}, "2022": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/28", "mankai_doy": 87}, "2021": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/24", "mankai_doy": 83}, "2020": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/2", "mankai_doy": 92}, "2019": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/1", "mankai_doy": 91}, "2018": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2017": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/8", "mankai_doy": 98}, "2016": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/31", "mankai_doy": 90}, "2015": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/26", "mankai_doy": 85}, "2013": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/25", "mankai_doy": 84}, "2012": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/3", "mankai_doy": 93}, "2011": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/5", "mankai_doy": 95}, "2010": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/2", "mankai_doy": 92}}}, {"pref": "長崎県", "city": "長崎", "lat": 32.7503, "lon": 129.8779, "earliest": "3/14", "latest": "4/1", "avg": "3/23", "years": {"2026": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/24", "kaika_doy": 83, "mankai": "3/31", "mankai_doy": 90}, "2024": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/2", "mankai_doy": 92}, "2023": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/30", "mankai_doy": 89}, "2022": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/29", "mankai_doy": 88}, "2021": {"kaika": "3/14", "kaika_doy": 73, "mankai": "3/23", "mankai_doy": 82}, "2020": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/3", "mankai_doy": 93}, "2019": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/3", "mankai_doy": 93}, "2018": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/26", "mankai_doy": 85}, "2017": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/7", "mankai_doy": 97}, "2016": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/30", "mankai_doy": 89}, "2015": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2013": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/23", "mankai_doy": 82}, "2012": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/2", "mankai_doy": 92}, "2011": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/7", "mankai_doy": 97}, "2010": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/31", "mankai_doy": 90}}}, {"pref": "熊本県", "city": "熊本", "lat": 32.7898, "lon": 130.7417, "earliest": "3/15", "latest": "4/2", "avg": "3/22", "years": {"2026": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/2", "mankai_doy": 92}, "2025": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/28", "mankai_doy": 87}, "2024": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/2", "mankai_doy": 92}, "2023": {"kaika": "3/22", "kaika_doy": 81, "mankai": "3/29", "mankai_doy": 88}, "2022": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/28", "mankai_doy": 87}, "2021": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/27", "mankai_doy": 86}, "2020": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/2", "mankai_doy": 92}, "2019": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/4", "mankai_doy": 94}, "2018": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/26", "mankai_doy": 85}, "2017": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/8", "mankai_doy": 98}, "2016": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/2", "mankai_doy": 92}, "2015": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/27", "mankai_doy": 86}, "2013": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/22", "mankai_doy": 81}, "2012": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/2", "mankai_doy": 92}, "2011": {"kaika": "3/21", "kaika_doy": 80, "mankai": "4/7", "mankai_doy": 97}, "2010": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/26", "mankai_doy": 85}}}, {"pref": "大分県", "city": "大分", "lat": 33.2382, "lon": 131.6126, "earliest": "3/14", "latest": "4/6", "avg": "3/24", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/5", "mankai_doy": 95}, "2025": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/4", "mankai_doy": 94}, "2024": {"kaika": "3/30", "kaika_doy": 89, "mankai": "4/5", "mankai_doy": 95}, "2023": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/3", "mankai_doy": 93}, "2022": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/1", "mankai_doy": 91}, "2021": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/30", "mankai_doy": 89}, "2020": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/8", "mankai_doy": 98}, "2019": {"kaika": "3/24", "kaika_doy": 83, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/23", "kaika_doy": 82, "mankai": "3/30", "mankai_doy": 89}, "2017": {"kaika": "4/4", "kaika_doy": 94, "mankai": "4/13", "mankai_doy": 103}, "2016": {"kaika": "3/28", "kaika_doy": 87, "mankai": "4/8", "mankai_doy": 98}, "2015": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/3", "mankai_doy": 93}, "2014": {"kaika": "3/25", "kaika_doy": 84, "mankai": "3/30", "mankai_doy": 89}, "2013": {"kaika": "3/14", "kaika_doy": 73, "mankai": "3/25", "mankai_doy": 84}, "2012": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/3", "mankai_doy": 93}, "2011": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/5", "mankai_doy": 95}, "2010": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/29", "mankai_doy": 88}}}, {"pref": "宮崎県", "city": "宮崎", "lat": 31.9111, "lon": 131.4239, "earliest": "3/13", "latest": "4/2", "avg": "3/23", "years": {"2026": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/3", "mankai_doy": 93}, "2025": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/2", "mankai_doy": 92}, "2024": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/3", "mankai_doy": 93}, "2023": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/30", "mankai_doy": 89}, "2022": {"kaika": "3/18", "kaika_doy": 77, "mankai": "3/28", "mankai_doy": 87}, "2021": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/29", "mankai_doy": 88}, "2020": {"kaika": "3/25", "kaika_doy": 84, "mankai": "4/8", "mankai_doy": 98}, "2019": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/5", "mankai_doy": 95}, "2018": {"kaika": "3/16", "kaika_doy": 75, "mankai": "3/26", "mankai_doy": 85}, "2017": {"kaika": "4/2", "kaika_doy": 92, "mankai": "4/9", "mankai_doy": 99}, "2016": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/5", "mankai_doy": 95}, "2015": {"kaika": "3/22", "kaika_doy": 81, "mankai": "4/1", "mankai_doy": 91}, "2014": {"kaika": "3/19", "kaika_doy": 78, "mankai": "3/28", "mankai_doy": 87}, "2013": {"kaika": "3/13", "kaika_doy": 72, "mankai": "3/22", "mankai_doy": 81}, "2012": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/3", "mankai_doy": 93}, "2011": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/4", "mankai_doy": 94}, "2010": {"kaika": "3/17", "kaika_doy": 76, "mankai": "4/2", "mankai_doy": 92}}}, {"pref": "鹿児島県", "city": "鹿児島", "lat": 31.5966, "lon": 130.5571, "earliest": "3/15", "latest": "4/5", "avg": "3/26", "years": {"2026": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/5", "mankai_doy": 95}, "2025": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/5", "mankai_doy": 95}, "2024": {"kaika": "3/29", "kaika_doy": 88, "mankai": "4/12", "mankai_doy": 102}, "2023": {"kaika": "3/24", "kaika_doy": 83, "mankai": "4/5", "mankai_doy": 95}, "2022": {"kaika": "3/20", "kaika_doy": 79, "mankai": "4/1", "mankai_doy": 91}, "2021": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/30", "mankai_doy": 89}, "2020": {"kaika": "4/1", "kaika_doy": 91, "mankai": "4/19", "mankai_doy": 109}, "2019": {"kaika": "3/25", "kaika_doy": 84, "mankai": null, "mankai_doy": null}, "2018": {"kaika": "3/17", "kaika_doy": 76, "mankai": "3/29", "mankai_doy": 88}, "2017": {"kaika": "4/5", "kaika_doy": 95, "mankai": "4/15", "mankai_doy": 105}, "2016": {"kaika": "3/27", "kaika_doy": 86, "mankai": "4/6", "mankai_doy": 96}, "2015": {"kaika": "3/21", "kaika_doy": 80, "mankai": "3/31", "mankai_doy": 90}, "2014": {"kaika": "3/20", "kaika_doy": 79, "mankai": "3/31", "mankai_doy": 90}, "2013": {"kaika": "3/15", "kaika_doy": 74, "mankai": "3/26", "mankai_doy": 85}, "2012": {"kaika": "3/26", "kaika_doy": 85, "mankai": "4/5", "mankai_doy": 95}, "2011": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/5", "mankai_doy": 95}, "2010": {"kaika": "3/23", "kaika_doy": 82, "mankai": "4/6", "mankai_doy": 96}}}];
+
+</script>
+<script>
+// ---------- Helpers ----------
+const YEARS = [];
+for (let y = 2026; y >= 2010; y--) YEARS.push(y);
+
+const MONTH_DAYS = [31,28,31,30,31,30,31,31,30,31,30,31];
+function doyToMMDD(doy){
+  let d = doy;
+  for (let m=0; m<12; m++){
+    if (d <= MONTH_DAYS[m]) return (m+1)+'/'+d;
+    d -= MONTH_DAYS[m];
+  }
+  return '--/--';
+}
+
+function lerpColor(a, b, t){
+  t = Math.max(0, Math.min(1, t));
+  const ah = a.match(/\w\w/g).map(x=>parseInt(x,16));
+  const bh = b.match(/\w\w/g).map(x=>parseInt(x,16));
+  const rh = ah.map((v,i)=>Math.round(v + (bh[i]-v)*t));
+  return '#'+rh.map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
+const COL_BUD = '#5c6b7a';
+const COL_LIGHT = '#ffd9e6';
+const COL_MID = '#ff9fb8';
+const COL_FULL = '#ff5d82';
+const COL_PEAK = '#c9556f';
+
+// returns {color, radius, phase} for a city on a given selected day-of-year & year
+function bloomState(entry, year, selDoy){
+  const yd = entry.years[String(year)];
+  if (!yd || !yd.kaika_doy){
+    return {color: COL_BUD, radius: 5, fill: false, phase:'no-data'};
+  }
+  const k = yd.kaika_doy;
+  const m = yd.mankai_doy || (k + 7); // fallback if mankai missing
+  if (selDoy < k){
+    return {color: COL_BUD, radius: 5, fill:false, phase:'bud'};
+  }
+  if (selDoy <= m){
+    const t = (m > k) ? (selDoy - k) / (m - k) : 1;
+    const color = t < 0.5 ? lerpColor(COL_LIGHT, COL_MID, t/0.5) : lerpColor(COL_MID, COL_FULL, (t-0.5)/0.5);
+    const radius = 6 + t*4;
+    return {color, radius, fill:true, phase: t < 0.15 ? 'opening' : (t>0.85?'full':'blooming')};
+  }
+  // past peak - fade toward peak/dusty rose over ~14 days
+  const daysPast = selDoy - m;
+  const t2 = Math.min(1, daysPast/14);
+  const color = lerpColor(COL_FULL, COL_PEAK, t2);
+  const radius = 10 - t2*2.5;
+  return {color, radius, fill:true, phase:'past'};
+}
+
+// ---------- Map setup ----------
+const map = L.map('map', {zoomControl:true, attributionControl:true}).setView([37.5, 138.5], 5);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+  subdomains: 'abcd',
+  maxZoom: 12
+}).addTo(map);
+
+const markers = {};
+SAKURA_DATA.forEach(entry => {
+  const m = L.circleMarker([entry.lat, entry.lon], {
+    radius: 5, color:'#fff', weight:1, fillColor: COL_BUD, fillOpacity:0.9
+  }).addTo(map);
+  m.bindPopup('', {maxWidth:230});
+  m.on('click', () => renderPopup(entry));
+  markers[entry.city] = m;
+});
+
+function renderPopup(entry){
+  const y = state.year;
+  const yd = entry.years[String(y)] || {};
+  const html = `
+    <div class="popup-title">${entry.city}</div>
+    <div class="popup-pref">${entry.pref}</div>
+    <div class="popup-row"><span class="k">${y}年 開花日</span><span class="v">${yd.kaika || '無資料'}</span></div>
+    <div class="popup-row"><span class="k">${y}年 滿開日</span><span class="v">${yd.mankai || '無資料'}</span></div>
+    <div class="popup-hist">
+      <div class="popup-row"><span class="k">歷年最早開花</span><span class="v">${entry.earliest||'-'}</span></div>
+      <div class="popup-row"><span class="k">歷年最晚開花</span><span class="v">${entry.latest||'-'}</span></div>
+      <div class="popup-row"><span class="k">歷年平均開花</span><span class="v">${entry.avg||'-'}</span></div>
+    </div>`;
+  markers[entry.city].setPopupContent(html).openPopup();
+}
+
+// ---------- State & controls ----------
+const state = { year: 2026, doy: 100, playing: false, timer: null };
+
+const yearSelect = document.getElementById('yearSelect');
+YEARS.forEach(y => {
+  const opt = document.createElement('option');
+  opt.value = y; opt.textContent = y + ' 年';
+  yearSelect.appendChild(opt);
+});
+yearSelect.value = state.year;
+
+const dateSlider = document.getElementById('dateSlider');
+const dateBadge = document.getElementById('dateBadge');
+const statCount = document.getElementById('statCount');
+const cityListEl = document.getElementById('cityList');
+const playBtn = document.getElementById('playBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+function render(){
+  dateSlider.value = state.doy;
+  dateBadge.textContent = doyToMMDD(state.doy);
+  let bloomedCount = 0;
+  SAKURA_DATA.forEach(entry => {
+    const s = bloomState(entry, state.year, state.doy);
+    const mk = markers[entry.city];
+    mk.setStyle({
+      fillColor: s.color,
+      fillOpacity: s.fill ? 0.92 : 0.35,
+      color: s.fill ? '#ffffff' : '#8a97a3',
+      weight: s.phase === 'opening' ? 2 : 1
+    });
+    mk.setRadius(s.radius);
+    if (s.phase !== 'bud' && s.phase !== 'no-data') bloomedCount++;
+  });
+  statCount.textContent = bloomedCount;
+  renderCityList();
+}
+
+function renderCityList(){
+  const y = state.year;
+  const rows = SAKURA_DATA.map(e => {
+    const yd = e.years[String(y)] || {};
+    return {city: e.city, pref: e.pref, doy: yd.kaika_doy, date: yd.kaika};
+  }).sort((a,b) => (a.doy||999) - (b.doy||999));
+  cityListEl.innerHTML = rows.map(r => {
+    const pending = !r.doy || r.doy > state.doy;
+    return `<div class="city-row ${pending?'pending':''}">
+      <span class="cname">${r.city}</span>
+      <span class="cdate">${r.date || '無資料'}</span>
+    </div>`;
+  }).join('');
+}
+
+yearSelect.addEventListener('change', () => {
+  state.year = parseInt(yearSelect.value, 10);
+  render();
+});
+
+dateSlider.addEventListener('input', () => {
+  state.doy = parseInt(dateSlider.value, 10);
+  render();
+});
+
+resetBtn.addEventListener('click', () => {
+  stopPlay();
+  state.doy = 60;
+  render();
+});
+
+function stopPlay(){
+  state.playing = false;
+  playBtn.textContent = '▶ 播放花期';
+  if (state.timer) { clearInterval(state.timer); state.timer = null; }
+}
+function startPlay(){
+  state.playing = true;
+  playBtn.textContent = '⏸ 暫停';
+  if (state.doy >= 150) state.doy = 60;
+  state.timer = setInterval(() => {
+    state.doy += 1;
+    if (state.doy > 150){ stopPlay(); return; }
+    render();
+  }, 140);
+}
+playBtn.addEventListener('click', () => {
+  if (state.playing) stopPlay(); else startPlay();
+});
+
+// ---------- Trend chart: national average first-bloom day by year ----------
+const trendYears = [...YEARS].sort((a,b)=>a-b);
+const trendAvg = trendYears.map(y => {
+  const vals = SAKURA_DATA.map(e => e.years[String(y)] && e.years[String(y)].kaika_doy).filter(v=>v);
+  if (!vals.length) return null;
+  return vals.reduce((a,b)=>a+b,0) / vals.length;
+});
+
+const ctx = document.getElementById('trendChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: trendYears,
+    datasets: [{
+      label: '全國平均開花日 (day-of-year)',
+      data: trendAvg,
+      borderColor: '#ff5d82',
+      backgroundColor: 'rgba(255,93,130,0.15)',
+      pointRadius: 2,
+      pointBackgroundColor: '#ffd9e6',
+      tension: 0.3,
+      fill: true,
+      spanGaps: true
+    }]
+  },
+  options: {
+    responsive:true,
+    plugins:{ legend:{display:false} },
+    scales:{
+      x:{ ticks:{ color:'#8a6270', font:{size:14} }, grid:{ color:'rgba(0,0,0,0.05)' } },
+      y:{ ticks:{ color:'#8a6270', font:{size:14}, callback:(v)=>doyToMMDD(v) }, grid:{ color:'rgba(0,0,0,0.05)' } }
+    }
+  }
+});
+
+// ---------- Header petal decoration ----------
+const petalsEl = document.getElementById('petals');
+for (let i=0;i<14;i++){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.textContent = '❀';
+  p.style.left = (Math.random()*100)+'%';
+  p.style.animationDuration = (4+Math.random()*4)+'s';
+  p.style.animationDelay = (Math.random()*5)+'s';
+  p.style.fontSize = (10+Math.random()*8)+'px';
+  petalsEl.appendChild(p);
+}
+
+// initial render
+render();
+
+</script>
+</body>
+</html>
