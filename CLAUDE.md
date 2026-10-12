@@ -139,7 +139,8 @@ Astro + Cloudflare Pages           Cloudflare Workers
 
 | 資料類型 | 來源 | 取得方式 | 更新頻率 | 風險備註 |
 |---|---|---|---|---|
-| 紅葉/櫻花前線 | tenki.jp、Weathernews、氣象廳 | Playwright 爬取(`scraper/koyo.py`) | 每日 | 頁面改版風險,需 selector 監控告警 |
+| 紅葉前線 | Weathernews 各縣頁(`__NUXT_DATA__`,約1,200景點色づき+見頃予想日)、日本気象第N回城市預測表 | Node fetch 零依賴(`scripts/scrape-koyo.mjs`,`.github/workflows/koyo-scraper.yml`) | 每日 06:00 JST(9–12月) | 改版時 0 筆→workflow 失敗並開 Issue(同日去重);未知狀態字串寫入 warnings |
+| 櫻花前線 | tenki.jp、Weathernews、氣象廳 | Playwright 爬取 | 每日 | 頁面改版風險,需 selector 監控告警 |
 | 天氣預報 | Open-Meteo API | 客戶端 fetch,免金鑰 | 即時 | 低;免費額度充足 |
 | 匯率 JPY/TWD | ExchangeRate-API 或台銀牌告 | Worker 代理 + 快取 1hr | 每小時 | 低 |
 | 周遊券票價規則 | JR 各社官網 | 人工維護 JSON(`data/passes.json`) | 年 1–2 次 | 改價需人工跟進,設年度 review 提醒 |

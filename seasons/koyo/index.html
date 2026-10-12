@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>紅葉前線 | 日本旅遊情報站</title>
-<meta name="description" content="依地理區域彙整的日本紅葉見頃資料，掌握全國46都道府県例年最佳賞楓期。">
+<title>2026 日本紅葉前線・見頃預測 | 日本旅遊情報站</title>
+<meta name="description" content="2026 日本紅葉見頃預測與即時色づき狀況：全國46都道府県、約1,200處賞楓景點每日更新，附主要城市紅葉・黃葉預測日與地圖。">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body class="season-autumn">
@@ -21,15 +22,26 @@
 </header>
 <main>
 <h1>🍁 紅葉前線</h1>
-<p>依地理位置分區彙整全國46都道府県（不含沖繩）的例年紅葉見頃資料，點選各區域標題可進入該地區詳細指南，查看縣別平均賞楓期、交通進出與住宿建議。</p>
-<div id="koyo-regions"><p>資料載入中...</p></div>
+<p>每日自動彙整全國46都道府県（不含沖繩）約1,200處賞楓景點的<strong>當前色づき狀況</strong>與<strong>2026年見頃預測日</strong>，並附日本気象主要城市紅葉・黃葉預測。點選縣名可展開景點清單，點選區域標題可進入該地區詳細指南。</p>
 <p id="koyo-date" class="disclaimer">資料載入中...</p>
+<div class="card" id="koyo-city"><p>資料載入中...</p></div>
+<div class="card" id="koyo-map-card">
+<h2>🗺️ 賞楓景點地圖</h2>
+<div id="koyo-legend" class="koyo-legend"></div>
+<div id="koyo-map"></div>
+</div>
+<div class="card">
+<h2>📍 各地區縣別狀況</h2>
+<div id="koyo-regions"><p>資料載入中...</p></div>
+</div>
 <div class="card">
 <h2>關於這份資料</h2>
-<p>目前已彙整全國46都道府県（不含沖繩）的例年見頃資料，由 koyo.walkerplus.com 各都道府県頁面人工整理而成，僅擷取日期、狀態等事實性資料，並依地理區域分類呈現。由於2026年紅葉季尚未開始，目前狀態統一顯示為「青葉」；等紅葉季開始，將每日自動執行更新抓取即時見頃狀態。點選上方各地區名稱（如關西、關東等）即可進入該地區的詳細指南頁面，</p>
+<p>景點色づき狀況與見頃預測日取自 <a href="https://weathernews.jp/koyo/" target="_blank" rel="noopener">Weathernews 紅葉情報</a>，主要城市預測取自 <a href="https://n-kishou.com/corp/news-contents/autumn/" target="_blank" rel="noopener">日本気象株式会社</a>；紅葉季期間（9–12月）每日早上 6 點（日本時間）自動更新。本站僅擷取日期、狀態、座標等事實性資料，不轉載文章與照片；「例年見頃」為 koyo.walkerplus.com 人工彙整。</p>
+<p class="disclaimer">※ 見頃會受天候、標高影響而變動，預測僅供行程規劃參考，出發前請以各景點官方公告為準。</p>
 </div>
 </main>
 <footer>Season Frontier - 季節と地域を結ぶ旅の羅針盤</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="/assets/js/koyo-map.js"></script>
 </body>
 </html>
