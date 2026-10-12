@@ -1,0 +1,73 @@
+name: Koyo Front Scraper
+
+# 紅葉前線每日爬蟲
+#  - 來源：Weathernews 各都道府県紅葉頁（色づき狀況・見頃予想日）+ 日本気象 第N回見頃予想城市表
+#  - 輸出：data/koyo/YYYY-MM-DD.json（依日期分檔、append-only）+ data/koyo/latest.json
+#  - 直接 commit 回 main → Cloudflare Pages 自動部署（CLAUDE.md §4「git commit 觸發自動部署」）
+#  - 失敗時自動開 Issue 告警（同一天只開一則，避免重複通知 — flight tracker 坑 #2）
+
+on:
+  workflow_dispatch:
+    inputs:
+      prefs:
+        description: "只抓部分縣（wnSlug，逗號分隔，留空=全部46縣）"
+        required: false
+        default: ""
+  schedule:
+    # 紅葉季 9–12 月，每日 06:00 JST（= 21:00 UTC 前一天）
+    - cron: "7 21 * 9,10,11,12 *"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: koyo-scraper
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run scraper
+        id: scrape
+        env:
+          PREFS: ${{ github.event.inputs.prefs }}
+          DELAY_MS: "1500"
+        run: node scripts/scrape-koyo.mjs
+
+      - name: Commit snapshot
+        if: ${{ github.event.inputs.prefs == '' || github.event.inputs.prefs == null }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/koyo/
+          if git diff --cached --quiet; then
+            echo "No changes"; exit 0
+          fi
+          git commit -m "chore(koyo): snapshot ${{ steps.scrape.outputs.snapshot_date }}"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            sleep 5
+          done
+
+      - name: Open issue on failure (dedup by date)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const day = new Date(Date.now() + 9*3600e3).toISOString().slice(0,10);
+            const title = `[koyo-scraper] 爬蟲失敗 ${day}`;
+            const { data } = await github.rest.issues.listForRepo({ ...context.repo, state: 'open', labels: 'scraper-alert' });
+            if (data.some(i => i.title === title)) return;
+            await github.rest.issues.create({
+              ...context.repo, title, labels: ['scraper-alert'],
+              body: `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n可能原因：來源頁面改版（__NUXT_DATA__ 結構或 n-kishou 表格變動）、網路錯誤。`
+            });
