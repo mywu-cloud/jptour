@@ -37,7 +37,7 @@
 │   │   └── tools/            # 實用工具線
 │   └── components/
 ├── scripts/                  # 爬蟲與資料處理腳本
-│   └── koyo.py               # 紅葉/櫻花前線爬蟲
+│   └── koyo.py               # (舊規劃)改為 scripts/scrape-koyo.mjs
 ├── data/                     # 抓取結果(append-only JSON)
 │   ├── koyo/                 # 依日期分檔,如 2026-07-09.json
 │   └── passes.json           # 周遊券票價規則(人工維護)
@@ -62,14 +62,14 @@ npm run build
 npm run deploy
 ```
 
-爬蟲腳本本機測試:
+紅葉爬蟲本機測試(Node 20+,零依賴):
 
 ```bash
-cd scripts
-pip install -r requirements.txt --break-system-packages
-playwright install --with-deps chromium
-python koyo.py
+node scripts/scrape-koyo.mjs                 # 全部46縣,輸出 data/koyo/YYYY-MM-DD.json + latest.json
+PREFS=kyoto,tokyo DELAY_MS=500 node scripts/scrape-koyo.mjs   # 只抓部分縣除錯
 ```
+
+GitHub Actions:`.github/workflows/koyo-scraper.yml` 於 9–12 月每日 06:07 JST 自動執行,亦可在 Actions 頁手動 Run workflow。
 
 ## 🗺️ 開發路線圖
 
