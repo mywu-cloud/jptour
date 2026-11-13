@@ -1,5 +1,5 @@
 {
-  "latestFile": "2026-11-12.json",
-  "updatedAt": "2026-11-12",
+  "latestFile": "2026-11-13.json",
+  "updatedAt": "2026-11-13",
   "note": "Manifest so front-end can find newest koyo dataset without hardcoding date."
 }
